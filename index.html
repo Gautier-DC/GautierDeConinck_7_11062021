@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Rechercher en 1 seconde la recette qui vous correspond !" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/399e6dfa69.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/dist/css/home.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap" rel="stylesheet" />
+    <title>Les Petits Plats - Bienvenue</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="#" id="logo" aria-label="lien vers la page d'accueil des Petits Plats">
+        <img src="assets/img/logo.png" alt="logo les petits plats" />
+      </a>
+    </header>
+    <!-- MAIN -->
+    <main>
+      <section class="top-search" role="banner">
+        <input
+          type="search"
+          id="site-search"
+          placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+          aria-label="Search through site content"
+        />
+        <button><i class="fas fa-search"></i></button>
+      </section>
+
+      <!-- FILTERS SECTION-->
+      <section id="filters">
+        <!-- Ingredients filter -->
+        <div id="ingredients">
+          <div class="option-wrapper">
+            <div
+              class="filters-button"
+              aria-controls="ingredients-options-list"
+              aria-haspopup="true"
+              aria-labelledby="ingredient-search"
+              role="searchbox"
+            >
+              <input type="text" placeholder="Ingrédients" id="ingredient-search" />
+              <span class="arrow"></span>
+            </div>
+            <ul id="ingredients-options-list" class="filters-options-list hidden" role="listbox">
+              <li class="option" aria-selected="false" role="option">Dashi</li>
+              <li class="option" aria-selected="false" role="option">Nori</li>
+              <li class="option" aria-selected="false" role="option">tofu</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Devices filter -->
+        <div id="appliances">
+          <div class="option-wrapper">
+            <div
+              class="filters-button"
+              aria-controls="appliances-options-list"
+              aria-haspopup="true"
+              aria-labelledby="appliances-search"
+              role="searchbox"
+            >
+              <input type="text" placeholder="Appareils" id="appliances-search" />
+              <span class="arrow"></span>
+            </div>
+            <ul id="appliances-options-list" class="filters-options-list hidden" role="listbox">
+              <li class="option" aria-selected="false" role="option">Mixeur</li>
+              <li class="option" aria-selected="false" role="option">Casserole</li>
+              <li class="option" aria-selected="false" role="option">Friteuse</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Ustensils filter -->
+        <div id="utensils">
+          <div class="option-wrapper">
+            <div
+              class="filters-button"
+              aria-controls="ustensils-options-list"
+              aria-haspopup="true"
+              aria-labelledby="ustensils-search"
+              role="searchbox"
+            >
+              <input type="text" placeholder="utensiles" id="ustensils-search" />
+              <span class="arrow"></span>
+            </div>
+            <ul id="ustensils-options-list" class="filters-options-list hidden" role="listbox">
+              <li class="option" aria-selected="false" role="option">Presse-citron</li>
+              <li class="option" aria-selected="false" role="option">Couteau</li>
+              <li class="option" aria-selected="false" role="option">Tamis</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- RECIPES SECTION -->
+      <section id="recipes">
+        <article class="recipe__card">
+          <figure></figure>
+          <div class="recipe__description">
+            <div class="recipe__description main-info">
+              <h2>Shoyu ramen</h2>
+              <p class="time"><i class="far fa-clock"></i> 80 min</p>
+            </div>
+            <div class="recipe__description detailed-info">
+              <ul class="ingredient-list">
+                <li><strong>Poitrine de Porc :</strong>500 g</li>
+                <li><strong>Sauce soja :</strong>100 ml</li>
+                <li><strong>Mirin :</strong>50 ml</li>
+                <li><strong>Saké :</strong>1 cs</li>
+              </ul>
+              <p>
+                Préparer le dashi qui sera ajouté au bouillon. Dans un récipient avec couvercle, mélanger dans l’eau froide les shitaké et le kombu.
+                Laisser reposer au moins 4h, de préférence 12 à 24h. Dans une casserole, ajouter tous les ingrédients du taré et mélanger pour que
+                tout le katsuobushi soit imbibé de sauce soja.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="recipe__card">
+          <figure></figure>
+          <div class="recipe__description">
+            <div class="recipe__description main-info">
+              <h2>Shoyu ramen</h2>
+              <p class="time"><i class="far fa-clock"></i> 80 min</p>
+            </div>
+            <div class="recipe__description detailed-info">
+              <ul class="ingredient-list">
+                <li><strong>Poitrine de Porc :</strong>500 g</li>
+                <li><strong>Sauce soja :</strong>100 ml</li>
+                <li><strong>Mirin :</strong>50 ml</li>
+                <li><strong>Saké :</strong>1 cs</li>
+              </ul>
+              <p>
+                Préparer le dashi qui sera ajouté au bouillon. Dans un récipient avec couvercle, mélanger dans l’eau froide les shitaké et le kombu.
+                Laisser reposer au moins 4h, de préférence 12 à 24h. Dans une casserole, ajouter tous les ingrédients du taré et mélanger pour que
+                tout le katsuobushi soit imbibé de sauce soja.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="recipe__card">
+          <figure></figure>
+          <div class="recipe__description">
+            <div class="recipe__description main-info">
+              <h2>Shoyu ramen</h2>
+              <p class="time"><i class="far fa-clock"></i> 80 min</p>
+            </div>
+            <div class="recipe__description detailed-info">
+              <ul class="ingredient-list">
+                <li><strong>Poitrine de Porc :</strong>500 g</li>
+                <li><strong>Sauce soja :</strong>100 ml</li>
+                <li><strong>Mirin :</strong>50 ml</li>
+                <li><strong>Saké :</strong>1 cs</li>
+              </ul>
+              <p>
+                Préparer le dashi qui sera ajouté au bouillon. Dans un récipient avec couvercle, mélanger dans l’eau froide les shitaké et le kombu.
+                Laisser reposer au moins 4h, de préférence 12 à 24h. Dans une casserole, ajouter tous les ingrédients du taré et mélanger pour que
+                tout le katsuobushi soit imbibé de sauce soja.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="recipe__card">
+          <figure></figure>
+          <div class="recipe__description">
+            <div class="recipe__description main-info">
+              <h2>Shoyu ramen</h2>
+              <p class="time"><i class="far fa-clock"></i> 80 min</p>
+            </div>
+            <div class="recipe__description detailed-info">
+              <ul class="ingredient-list">
+                <li><strong>Poitrine de Porc :</strong>500 g</li>
+                <li><strong>Sauce soja :</strong>100 ml</li>
+                <li><strong>Mirin :</strong>50 ml</li>
+                <li><strong>Saké :</strong>1 cs</li>
+              </ul>
+              <p>
+                Préparer le dashi qui sera ajouté au bouillon. Dans un récipient avec couvercle, mélanger dans l’eau froide les shitaké et le kombu.
+                Laisser reposer au moins 4h, de préférence 12 à 24h. Dans une casserole, ajouter tous les ingrédients du taré et mélanger pour que
+                tout le katsuobushi soit imbibé de sauce soja.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="recipe__card">
+          <figure></figure>
+          <div class="recipe__description">
+            <div class="recipe__description main-info">
+              <h2>Shoyu ramen</h2>
+              <p class="time"><i class="far fa-clock"></i> 80 min</p>
+            </div>
+            <div class="recipe__description detailed-info">
+              <ul class="ingredient-list">
+                <li><strong>Poitrine de Porc :</strong>500 g</li>
+                <li><strong>Sauce soja :</strong>100 ml</li>
+                <li><strong>Mirin :</strong>50 ml</li>
+                <li><strong>Saké :</strong>1 cs</li>
+              </ul>
+              <p>
+                Préparer le dashi qui sera ajouté au bouillon. Dans un récipient avec couvercle, mélanger dans l’eau froide les shitaké et le kombu.
+                Laisser reposer au moins 4h, de préférence 12 à 24h. Dans une casserole, ajouter tous les ingrédients du taré et mélanger pour que
+                tout le katsuobushi soit imbibé de sauce soja.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
