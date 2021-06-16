@@ -12,14 +12,14 @@
   </head>
   <body>
     <!-- HEADER -->
-    <header>
+    <header class="d-flex row">
       <a href="#" id="logo" aria-label="lien vers la page d'accueil des Petits Plats">
         <img src="assets/img/logo.png" alt="logo les petits plats" />
       </a>
     </header>
     <!-- MAIN -->
     <main>
-      <section class="top-search" role="banner">
+      <section class="top-search" role="banner" class="d-flex row">
         <input
           type="search"
           id="site-search"
@@ -30,83 +30,80 @@
       </section>
 
       <!-- FILTERS SECTION-->
-      <section id="filters">
+      <section id="filters" class="d-flex row">
         <!-- Ingredients filter -->
-        <div id="ingredients">
-          <div class="option-wrapper">
-            <div
-              class="filters-button"
-              aria-controls="ingredients-options-list"
-              aria-haspopup="true"
-              aria-labelledby="ingredient-search"
-              role="searchbox"
-            >
-              <input type="text" placeholder="Ingrédients" id="ingredient-search" />
-              <span class="arrow"></span>
-            </div>
-            <ul id="ingredients-options-list" class="filters-options-list hidden" role="listbox">
-              <li class="option" aria-selected="false" role="option">Dashi</li>
-              <li class="option" aria-selected="false" role="option">Nori</li>
-              <li class="option" aria-selected="false" role="option">tofu</li>
-            </ul>
+        <div id="ingredients" class="d-flex row option-wrapper">
+          <div
+            id="ingredients-filters-button"
+            class="filters-button"
+            aria-controls="ingredients-options-list"
+            aria-haspopup="true"
+            aria-labelledby="ingredient-search"
+            role="searchbox"
+          >
+            <input type="text" placeholder="Ingrédients" id="ingredient-search" />
+            <span class="arrow"></span>
           </div>
+          <ul id="ingredients-options-list" class="filters-options-list hidden" role="listbox">
+            <li class="option" aria-selected="false" role="option">Dashi</li>
+            <li class="option" aria-selected="false" role="option">Nori</li>
+            <li class="option" aria-selected="false" role="option">tofu</li>
+          </ul>
         </div>
         <!-- Devices filter -->
-        <div id="appliances">
-          <div class="option-wrapper">
-            <div
-              class="filters-button"
-              aria-controls="appliances-options-list"
-              aria-haspopup="true"
-              aria-labelledby="appliances-search"
-              role="searchbox"
-            >
-              <input type="text" placeholder="Appareils" id="appliances-search" />
-              <span class="arrow"></span>
-            </div>
-            <ul id="appliances-options-list" class="filters-options-list hidden" role="listbox">
-              <li class="option" aria-selected="false" role="option">Mixeur</li>
-              <li class="option" aria-selected="false" role="option">Casserole</li>
-              <li class="option" aria-selected="false" role="option">Friteuse</li>
-            </ul>
+        <div id="appliances" class="d-flex row option-wrapper">
+          <div
+            id="appliances-filters-button"
+            class="filters-button"
+            aria-controls="appliances-options-list"
+            aria-haspopup="true"
+            aria-labelledby="appliances-search"
+            role="searchbox"
+          >
+            <input type="text" placeholder="Appareils" id="appliances-search" />
+            <span class="arrow"></span>
           </div>
+          <ul id="appliances-options-list" class="filters-options-list hidden" role="listbox">
+            <li class="option" aria-selected="false" role="option">Mixeur</li>
+            <li class="option" aria-selected="false" role="option">Casserole</li>
+            <li class="option" aria-selected="false" role="option">Friteuse</li>
+          </ul>
         </div>
         <!-- Ustensils filter -->
-        <div id="utensils">
-          <div class="option-wrapper">
-            <div
-              class="filters-button"
-              aria-controls="ustensils-options-list"
-              aria-haspopup="true"
-              aria-labelledby="ustensils-search"
-              role="searchbox"
-            >
-              <input type="text" placeholder="utensiles" id="ustensils-search" />
-              <span class="arrow"></span>
-            </div>
-            <ul id="ustensils-options-list" class="filters-options-list hidden" role="listbox">
-              <li class="option" aria-selected="false" role="option">Presse-citron</li>
-              <li class="option" aria-selected="false" role="option">Couteau</li>
-              <li class="option" aria-selected="false" role="option">Tamis</li>
-            </ul>
+        <div id="ustensils" class="d-flex row option-wrapper">
+          <div
+            id="ustensils-filters-button"
+            class="filters-button"
+            aria-controls="ustensils-options-list"
+            aria-haspopup="true"
+            aria-labelledby="ustensils-search"
+            role="searchbox"
+          >
+            <input type="text" placeholder="Ustensiles" id="ustensils-search" />
+            <span class="arrow"></span>
           </div>
+          <ul id="ustensils-options-list" class="filters-options-list hidden" role="listbox">
+            <li class="option" aria-selected="false" role="option">Presse-citron</li>
+            <li class="option" aria-selected="false" role="option">Couteau</li>
+            <li class="option" aria-selected="false" role="option">Tamis</li>
+          </ul>
         </div>
       </section>
 
       <!-- RECIPES SECTION -->
-      <section id="recipes">
-        <article class="recipe__card">
+      <section id="recipes" class="d-flex row">
+        <article class="recipe__card d-flex column">
           <figure></figure>
-          <div class="recipe__description">
-            <div class="recipe__description main-info">
+          <div class="recipe__description d-flex column">
+            <div class="main-info d-flex row">
               <h2>Shoyu ramen</h2>
               <p class="time"><i class="far fa-clock"></i> 80 min</p>
             </div>
-            <div class="recipe__description detailed-info">
+            <div class="detailed-info d-flex row">
               <ul class="ingredient-list">
-                <li><strong>Poitrine de Porc :</strong>500 g</li>
-                <li><strong>Sauce soja :</strong>100 ml</li>
-                <li><strong>Mirin :</strong>50 ml</li>
+                <li><strong>Poitrine de Porc :</strong> 500 g</li>
+                <li><strong>Sauce soja :</strong> 100 ml</li>
+                <li><strong>Mirin :</strong> 50 ml</li>
                 <li><strong>Saké :</strong>1 cs</li>
               </ul>
               <p>
@@ -117,18 +114,18 @@
             </div>
           </div>
         </article>
-        <article class="recipe__card">
+        <article class="recipe__card d-flex column">
           <figure></figure>
-          <div class="recipe__description">
-            <div class="recipe__description main-info">
+          <div class="recipe__description d-flex column">
+            <div class="main-info d-flex row">
               <h2>Shoyu ramen</h2>
               <p class="time"><i class="far fa-clock"></i> 80 min</p>
             </div>
-            <div class="recipe__description detailed-info">
+            <div class="detailed-info d-flex row">
               <ul class="ingredient-list">
-                <li><strong>Poitrine de Porc :</strong>500 g</li>
-                <li><strong>Sauce soja :</strong>100 ml</li>
-                <li><strong>Mirin :</strong>50 ml</li>
+                <li><strong>Poitrine de Porc :</strong> 500 g</li>
+                <li><strong>Sauce soja :</strong> 100 ml</li>
+                <li><strong>Mirin :</strong> 50 ml</li>
                 <li><strong>Saké :</strong>1 cs</li>
               </ul>
               <p>
@@ -139,18 +136,18 @@
             </div>
           </div>
         </article>
-        <article class="recipe__card">
+        <article class="recipe__card d-flex column">
           <figure></figure>
-          <div class="recipe__description">
-            <div class="recipe__description main-info">
+          <div class="recipe__description d-flex column">
+            <div class="main-info d-flex row">
               <h2>Shoyu ramen</h2>
               <p class="time"><i class="far fa-clock"></i> 80 min</p>
             </div>
-            <div class="recipe__description detailed-info">
+            <div class="detailed-info d-flex row">
               <ul class="ingredient-list">
-                <li><strong>Poitrine de Porc :</strong>500 g</li>
-                <li><strong>Sauce soja :</strong>100 ml</li>
-                <li><strong>Mirin :</strong>50 ml</li>
+                <li><strong>Poitrine de Porc :</strong> 500 g</li>
+                <li><strong>Sauce soja :</strong> 100 ml</li>
+                <li><strong>Mirin :</strong> 50 ml</li>
                 <li><strong>Saké :</strong>1 cs</li>
               </ul>
               <p>
@@ -161,18 +158,18 @@
             </div>
           </div>
         </article>
-        <article class="recipe__card">
+        <article class="recipe__card d-flex column">
           <figure></figure>
-          <div class="recipe__description">
-            <div class="recipe__description main-info">
+          <div class="recipe__description d-flex column">
+            <div class="main-info d-flex row">
               <h2>Shoyu ramen</h2>
               <p class="time"><i class="far fa-clock"></i> 80 min</p>
             </div>
-            <div class="recipe__description detailed-info">
+            <div class="detailed-info d-flex row">
               <ul class="ingredient-list">
-                <li><strong>Poitrine de Porc :</strong>500 g</li>
-                <li><strong>Sauce soja :</strong>100 ml</li>
-                <li><strong>Mirin :</strong>50 ml</li>
+                <li><strong>Poitrine de Porc :</strong> 500 g</li>
+                <li><strong>Sauce soja :</strong> 100 ml</li>
+                <li><strong>Mirin :</strong> 50 ml</li>
                 <li><strong>Saké :</strong>1 cs</li>
               </ul>
               <p>
@@ -183,18 +180,62 @@
             </div>
           </div>
         </article>
-        <article class="recipe__card">
+        <article class="recipe__card d-flex column">
           <figure></figure>
-          <div class="recipe__description">
-            <div class="recipe__description main-info">
+          <div class="recipe__description d-flex column">
+            <div class="main-info d-flex row">
               <h2>Shoyu ramen</h2>
               <p class="time"><i class="far fa-clock"></i> 80 min</p>
             </div>
-            <div class="recipe__description detailed-info">
+            <div class="detailed-info d-flex row">
               <ul class="ingredient-list">
-                <li><strong>Poitrine de Porc :</strong>500 g</li>
-                <li><strong>Sauce soja :</strong>100 ml</li>
-                <li><strong>Mirin :</strong>50 ml</li>
+                <li><strong>Poitrine de Porc :</strong> 500 g</li>
+                <li><strong>Sauce soja :</strong> 100 ml</li>
+                <li><strong>Mirin :</strong> 50 ml</li>
+                <li><strong>Saké :</strong>1 cs</li>
+              </ul>
+              <p>
+                Préparer le dashi qui sera ajouté au bouillon. Dans un récipient avec couvercle, mélanger dans l’eau froide les shitaké et le kombu.
+                Laisser reposer au moins 4h, de préférence 12 à 24h. Dans une casserole, ajouter tous les ingrédients du taré et mélanger pour que
+                tout le katsuobushi soit imbibé de sauce soja.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="recipe__card d-flex column">
+          <figure></figure>
+          <div class="recipe__description d-flex column">
+            <div class="main-info d-flex row">
+              <h2>Shoyu ramen</h2>
+              <p class="time"><i class="far fa-clock"></i> 80 min</p>
+            </div>
+            <div class="detailed-info d-flex row">
+              <ul class="ingredient-list">
+                <li><strong>Poitrine de Porc :</strong> 500 g</li>
+                <li><strong>Sauce soja :</strong> 100 ml</li>
+                <li><strong>Mirin :</strong> 50 ml</li>
+                <li><strong>Saké :</strong>1 cs</li>
+              </ul>
+              <p>
+                Préparer le dashi qui sera ajouté au bouillon. Dans un récipient avec couvercle, mélanger dans l’eau froide les shitaké et le kombu.
+                Laisser reposer au moins 4h, de préférence 12 à 24h. Dans une casserole, ajouter tous les ingrédients du taré et mélanger pour que
+                tout le katsuobushi soit imbibé de sauce soja.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="recipe__card d-flex column">
+          <figure></figure>
+          <div class="recipe__description d-flex column">
+            <div class="main-info d-flex row">
+              <h2>Shoyu ramen</h2>
+              <p class="time"><i class="far fa-clock"></i> 80 min</p>
+            </div>
+            <div class="detailed-info d-flex row">
+              <ul class="ingredient-list">
+                <li><strong>Poitrine de Porc :</strong> 500 g</li>
+                <li><strong>Sauce soja :</strong> 100 ml</li>
+                <li><strong>Mirin :</strong> 50 ml</li>
                 <li><strong>Saké :</strong>1 cs</li>
               </ul>
               <p>

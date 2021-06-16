@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1em;
+  font-family: 'Lato', sans-serif;
+  color: #000;
+  min-width: 370px;
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
+}
+
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+section{
+    padding: 0.5em 2em;
+}
