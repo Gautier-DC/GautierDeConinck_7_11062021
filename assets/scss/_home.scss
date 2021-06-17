@@ -29,9 +29,13 @@
 }
 
 #recipes {
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  @include tablet-landscape{
+    flex-direction: row;
+  }
   .recipe__card {
     background-color: $bg-recipe;
     border-radius: $border-radius;
@@ -39,7 +43,13 @@
     margin-bottom: 3em;
     justify-content: space-between;
     align-items: center;
-    flex-basis: 31%;
+    flex-basis: 100%;
+    @include tablet-landscape{
+      flex-basis: 48%;
+    }
+    @include desktop{
+      flex-basis: 31%;
+    }
   }
   figure {
     width: 100%;
@@ -68,20 +78,21 @@
   }
   .detailed-info {
     margin-top: 1em;
-    overflow: hidden;
     justify-content: space-between;
     align-items: flex-start;
     flex: 0 0 75%;
-    .ingredient-list {
-      flex-basis: 48%;
+    .ingredient-list, p {
+      display: block; /* Fallback for non-webkit */
+      display: -webkit-box;
+      height: $line-height*$lines-to-show;
       font-size: map-get($font-size, det-info);
       line-height: 1.5em;
-    }
-    p {
-      flex-basis: 48%;
-      font-size: map-get($font-size, det-info);
+      -webkit-line-clamp: $lines-to-show;
+      -webkit-box-orient: vertical;
       overflow: hidden;
+      text-overflow: -o-ellipsis-lastline;
       text-overflow: ellipsis;
+      flex-basis: 48%;
     }
   }
 }
