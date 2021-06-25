@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="description" content="Rechercher en 1 seconde la recette qui vous correspond !" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/399e6dfa69.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/dist/css/home.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -32,74 +33,38 @@
       <!-- FILTERS SECTION-->
       <section id="filters" class="d-flex">
         <!-- Ingredients filter -->
-        <div id="ingredients" class="d-flex row option-wrapper">
+        <div id="ingredients" class="option-wrapper">
           <div
-            id="ingredients-filters-button"
-            class="filters-button"
+            id="ingredients-filter-button"
+            class="filters-button d-flex row"
             aria-controls="ingredients-options-list"
             aria-haspopup="true"
             aria-labelledby="ingredient-search"
             role="searchbox"
           >
-            <input type="text" placeholder="Ingrédients" id="ingredient-search" />
+            <span class="filter-name">Ingrédients</span>
             <span class="arrow"></span>
-          </div>
+        </div>
           <ul id="ingredients-options-list" class="dropdown-content d-flex" role="listbox">
             <li class="option" aria-selected="false" role="option">Dashi</li>
             <li class="option" aria-selected="false" role="option">Nori</li>
             <li class="option" aria-selected="false" role="option">tofu</li>
             <li class="option" aria-selected="false" role="option">Dashi</li>
             <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
-            <li class="option" aria-selected="false" role="option">Dashi</li>
-            <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
-            <li class="option" aria-selected="false" role="option">Dashi</li>
-            <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
-            <li class="option" aria-selected="false" role="option">Dashi</li>
-            <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
-            <li class="option" aria-selected="false" role="option">Dashi</li>
-            <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
-            <li class="option" aria-selected="false" role="option">Dashi</li>
-            <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
-            <li class="option" aria-selected="false" role="option">Dashi</li>
-            <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
-            <li class="option" aria-selected="false" role="option">Dashi</li>
-            <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
-            <li class="option" aria-selected="false" role="option">Dashi</li>
-            <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
-            <li class="option" aria-selected="false" role="option">Dashi</li>
-            <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
-            <li class="option" aria-selected="false" role="option">Dashi</li>
-            <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
-            <li class="option" aria-selected="false" role="option">Dashi</li>
-            <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
-            <li class="option" aria-selected="false" role="option">Dashi</li>
-            <li class="option" aria-selected="false" role="option">Nori</li>
-            <li class="option" aria-selected="false" role="option">tofu</li>
           </ul>
         </div>
         <!-- Devices filter -->
         <div id="appliances" class="d-flex row option-wrapper">
           <div
-            id="appliances-filters-button"
+            id="appliances-filter-button"
             class="filters-button"
             aria-controls="appliances-options-list"
             aria-haspopup="true"
             aria-labelledby="appliances-search"
             role="searchbox"
           >
-            <input type="text" placeholder="Appareils" id="appliances-search" />
+            <span class="filter-name">Appareils</span>
+            <input type="text" placeholder="Recherche un appareil" id="appliances-search" class="hidden"/>
             <span class="arrow"></span>
           </div>
           <ul id="appliances-options-list" class="dropdown-content" role="listbox">
@@ -111,14 +76,15 @@
         <!-- Ustensils filter -->
         <div id="ustensils" class="d-flex row option-wrapper">
           <div
-            id="ustensils-filters-button"
+            id="ustensils-filter-button"
             class="filters-button"
             aria-controls="ustensils-options-list"
             aria-haspopup="true"
             aria-labelledby="ustensils-search"
             role="searchbox"
           >
-            <input type="text" placeholder="Ustensiles" id="ustensils-search" />
+            <span class="filter-name">Appareils</span>
+            <input type="text" placeholder="Recherche un ustensile" id="ustensils-search" class="hidden" />
             <span class="arrow"></span>
           </div>
           <ul id="ustensils-options-list" class="dropdown-content hidden" role="listbox">
@@ -287,5 +253,10 @@
         </article>
       </section>
     </main>
+    <script src="assets/dist/js/home.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
