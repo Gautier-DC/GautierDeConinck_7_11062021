@@ -1,4 +1,25 @@
-/*Filters colors*/
+#ingredients-tag-list{
+  background-color: $primary;
+}
+#appliances-tag-list{
+  background-color: $success;
+}
+#ustensils-tag-list{
+  background-color: $secondary;
+}
+
+.sub-search__taglist{
+  color:#fff;
+  width: 100%;
+  border: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  cursor: pointer;
+}
+
+
+
+/*Filters colors
 #ingredients-filter-button,
 #ingredients-options-list,
 #ingredient-search {
@@ -18,7 +39,7 @@
   flex-basis: 100%;
 }
 
-/*Filters shape*/
+/*Filters shape
 #filters {
   justify-content: flex-start;
   align-items: center;
@@ -27,9 +48,11 @@
     flex-direction: row;
   }
   .option-wrapper {
-    position: relative;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
     height: 50px;
     width: 100%;
     margin-bottom: 1em;
@@ -118,7 +141,10 @@
     }    
   }
 }
-
+*/
+.sub-search__wrapper{
+  
+}
 /*Arrow section*/
 .arrow {
   position: relative;
@@ -133,8 +159,6 @@
   width: 0.15rem;
   height: 100%;
   transition: all 0.5s;
-  @include desktop{
-  }
 }
 .arrow::before {
   left: -3px;
@@ -146,11 +170,11 @@
   transform: rotate(-45deg);
   background-color: #fff;
 }
-.open .arrow::before {
+.show .arrow::before {
   left: -3px;
   transform: rotate(-45deg);
 }
-.open .arrow::after {
+.show .arrow::after {
   right: 6px;
   transform: rotate(45deg);
 }

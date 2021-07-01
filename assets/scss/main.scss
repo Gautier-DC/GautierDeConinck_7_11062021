@@ -1,12 +1,11 @@
+@import "./abstracts/variables_overrides";
+@import "/node_modules/bootstrap/scss/bootstrap.scss";
 @import "./base/normalize";
 @import "./abstracts/functions";
-@import "./abstracts/variables";
 @import "./abstracts/mixins";
 @import "./base/typography";
 @import "./base/base";
 @import "./components/buttons";
-@import "./components/filters";
+@import "./components/subsearchs";
 @import "./components/animations";
-@import "./layout/flex";
-@import "./layout/footer";
 @import "./layout/header";

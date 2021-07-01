@@ -1,3 +1,5 @@
+import 'bootstrap';
+
 // DOM Selector
 let optionWrapper = document.getElementsByClassName('option-wrapper');
 let dropdownContent = document.getElementsByClassName('dropdown-content');
@@ -12,7 +14,7 @@ let filterName = document.getElementsByClassName('filter-name');
 
 document.querySelector('#filters').forEach(elt => {
   
-});*/
+});
 // Deploy filters menu
 let ingredients = document.querySelector('#ingredients');
 ingredients.addEventListener('click', function () {
@@ -33,5 +35,5 @@ document.querySelector('#ustensils').addEventListener('click', function () {
   optionWrapper[2].classList.toggle('open');
   dropdownContent[2].classList.toggle('open');
 });
-
+*/
 
