@@ -1,9 +1,20 @@
 @import "./main.scss";
 
+
 #main-search {
   text-align: left;
   cursor: auto;
   padding-right: 5rem;
+}
+
+.tag{
+  color: white;
+  &:hover{
+    color: white;    
+  }
+  i{
+    margin-left: 0.6rem;
+  }
 }
 
 article{
@@ -19,7 +30,12 @@ article{
     font-size: 0.82rem;
   }
   div:nth-of-type(1){
-    height: 28%;    
+    height: 28%;
+    h2:nth-of-type(2){
+      text-align: right;
+      font-weight: bold;
+      padding-left: 0;
+    }    
   }
   div:nth-of-type(2){
     height: 70%;

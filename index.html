@@ -19,9 +19,8 @@
     </header>
     <!-- MAIN -->
     <main class="container">
-      <section role="banner" class="row flex-row position-relative mb-3 justify-content-between align-items-center">
-        <input
-          class="col btn btn-lg bg-light text-left text-truncate"
+      <section role="banner" class="row gx-0 position-relative mb-3 justify-content-between align-items-center">        <input
+          class="col-12 btn btn-lg bg-light text-left text-truncate"
           type="search"
           id="main-search"
           placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
@@ -30,13 +29,30 @@
         <button class="col-1 position-absolute end-2 btn btn-lg bg-transparent text-dark"><i class="col-1 fas fa-search"></i></button>
       </section>
       <!-- TAGS SECTION -->
-      <section id="tags-container" class="row gx-3 justify-content-lg-start align-items-center">
-
+      <section id="tags-container" class="row mb-3 justify-content-start align-items-center">
+        <div class="col-12">
+          <span class="tag btn btn-primary btn-sm mb-1">riz<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">nori<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">Konjack<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">auto-cuiseur<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">riz<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">nori<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">Konjack<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">auto-cuiseur<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">riz<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">nori<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">Konjack<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">auto-cuiseur<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">riz<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">nori<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">Konjack<i class="far fa-times-circle"></i></span>
+          <span class="tag btn btn-primary btn-sm mb-1">auto-cuiseur<i class="far fa-times-circle"></i></span>
+        </div>
       </section>
       <!-- FILTERS SECTION-->
-      <section id="sub-search" class="row gy-3 justify-content-between justify-content-lg-start align-items-center">
+      <section id="sub-search" class="row justify-content-between justify-content-lg-start align-items-center">
         <!-- Ingredients Sub Search -->
-        <div id="sub-search__ingredients" class="col-12 col-lg-3 px-0 mb-3 dropdown d-flex justify-content-between align-items-center">
+        <div id="sub-search__ingredients" class="col-12 col-lg-3 mb-3 dropdown d-flex justify-content-between align-items-center">
           <button
             class="col btn btn-lg btn-primary text-white text-left font-weight-bold d-flex justify-content-between align-items-center"
             data-bs-toggle="dropdown"
@@ -44,7 +60,7 @@
           >
             <strong>Ingrédients</strong><span class="arrow col-1 end-0"></span>
           </button>
-          <ul id="ingredients-tag-list" class="sub-search__taglist dropdown-menu btn-primary text-white" role="listbox">
+          <ul id="ingredients-tag-list" class="sub-search__taglist col-12 dropdown-menu btn-primary text-white border-0 rounded-bottom" role="listbox">
             <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
             <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
             <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
@@ -53,7 +69,7 @@
           </ul>
         </div>
         <!-- Appliances Sub Search -->
-        <div id="sub-search__appliances" class="col-12 col-lg-3 px-0 mb-3 dropdown d-flex justify-content-between align-items-center">
+        <div id="sub-search__appliances" class="col-12 col-lg-3 mb-3 dropdown d-flex justify-content-between align-items-center">
           <a
             class="col btn btn-lg btn-success text-white text-left d-flex justify-content-between align-items-center"
             href="#"
@@ -70,7 +86,7 @@
           </ul>
         </div>
         <!-- Ustensils Sub Search -->
-        <div id="sub-search__ustensils" class="col-12 col-lg-3 px-0 mb-3 dropdown d-flex justify-content-between align-items-center">
+        <div id="sub-search__ustensils" class="col-12 col-lg-3 mb-3 dropdown d-flex justify-content-between align-items-center">
           <a
             class="col btn btn-lg btn-secondary text-white text-left d-flex justify-content-between align-items-center"
             href="#"
@@ -90,15 +106,15 @@
 
       <!-- RECIPES SECTION -->
       <section id="recipes" class="row gy-3 justify-content-between">
-        <article class="card col-12 col-md-6 col-lg-4 px-0">
+        <article class="card col-12 col-md-6 col-lg-4 border-0">
           <figure class="card-img-top px-0 mb-0"></figure>
-          <div class="card-body d-flex flex-column justify-content-start">
+          <div class="card-body d-flex flex-column justify-content-start rounded-bottom">
             <div class="row d-flex justify-content-between">
-              <h2 class="card-title col-8">Shoyu ramen</h2>
-              <h3 class="col text-right font-weight-italic"><i class="far fa-clock"></i> 80 min</h3>
+              <h2 class="card-title col-8 col-sm-9 col-md-7 col-xl-8">Shoyu ramen</h2>
+              <h2 class="col"><i class="far fa-clock"></i> 80 min</h3>
             </div>
             <div class="row justify-content-between align-items-start">
-              <ul class="card-text col-6">
+              <ul class="card-text col-6 list-unstyled">
                 <li><strong>Poitrine de Porc :</strong> 500 g</li>
                 <li><strong>Sauce soja :</strong> 100 ml</li>
                 <li><strong>Mirin :</strong> 50 ml</li>
@@ -112,15 +128,15 @@
             </div>
           </div>
         </article>
-        <article class="card col-12 col-md-6 col-lg-4 px-0">
+        <article class="card col-12 col-md-6 col-lg-4 border-0">
           <figure class="card-img-top px-0 mb-0"></figure>
-          <div class="card-body d-flex flex-column justify-content-start">
+          <div class="card-body d-flex flex-column justify-content-start rounded-bottom">
             <div class="row d-flex justify-content-between">
-              <h2 class="card-title col-8">Shoyu ramen</h2>
-              <h2 class="col-4 text-right font-weight-bold"><i class="far fa-clock"></i> 80 min</h2>
+              <h2 class="card-title col-8 col-sm-9 col-md-7 col-xl-8">Shoyu ramen</h2>
+              <h2 class="col text-right font-weight-bold"><i class="far fa-clock"></i> 80 min</h2>
             </div>
             <div class="row justify-content-between align-items-start">
-              <ul class="card-text col-6">
+              <ul class="card-text col-6 list-unstyled">
                 <li><strong>Poitrine de Porc :</strong> 500 g</li>
                 <li><strong>Sauce soja :</strong> 100 ml</li>
                 <li><strong>Mirin :</strong> 50 ml</li>
@@ -134,15 +150,15 @@
             </div>
           </div>
         </article>
-        <article class="card col-12 col-md-6 col-lg-4 px-0">
+        <article class="card col-12 col-md-6 col-lg-4 border-0">
           <figure class="card-img-top px-0 mb-0"></figure>
-          <div class="card-body d-flex flex-column justify-content-start">
+          <div class="card-body d-flex flex-column justify-content-start rounded-bottom">
             <div class="row d-flex justify-content-between">
-              <h2 class="card-title col-8">Shoyu ramen</h2>
-              <h2 class="col-4 text-right font-weight-bold"><i class="far fa-clock"></i> 80 min</h2>
+              <h2 class="card-title col-8 col-sm-9 col-md-7 col-xl-8 text-truncate">Shoyu ramen fhjdoljkswgfhljkdhljhlfhdxwlkj</h2>
+              <h2 class="col text-right font-weight-bold"><i class="far fa-clock"></i> 880 min</h2>
             </div>
             <div class="row justify-content-between align-items-start">
-              <ul class="card-text col-6">
+              <ul class="card-text col-6 list-unstyled">
                 <li><strong>Poitrine de Porc :</strong> 500 g</li>
                 <li><strong>Sauce soja :</strong> 100 ml</li>
                 <li><strong>Mirin :</strong> 50 ml</li>
