@@ -1,7 +1,7 @@
 import 'bootstrap';
 
 // DOM Selector
-let subsearchButton = document.getElementsByTagName('button');
+let subsearchButton = document.getElementsByClassName('sub-search__button');
 
 
 // Import data
@@ -17,11 +17,11 @@ const buildSubsearchBtn = (subsearchList) => {
     subsearchBloc.setAttribute('id', 'sub-search__' + elt);
     subsearchBloc.classList.add('sub-search__bloc', 'col-12', 'col-lg-3', 'mb-3', 'dropdown', 'd-flex', 'flex-column', 'justify-content-between', 'align-items-center');
     subsearchBloc.innerHTML = `<div
-    class="sub-search__button d-flex w-100 mw-100 col btn btn-lg btn-success justify-content-between align-items-center"
+    class="sub-search__button d-flex w-100 mw-100 col btn btn-lg justify-content-between align-items-center"
     data-bs-toggle="dropdown"
     aria-expanded="false"
   >
-    <input class="col btn btn-lg btn-success text-white text-left font-weight-bold" type="button" value="${elt}" />
+    <input class="col btn btn-lg text-white text-left font-weight-bold border-0" type="button" value="${elt}" />
     <span class="arrow col-1 end-0"></span>
   </div>
   <ul

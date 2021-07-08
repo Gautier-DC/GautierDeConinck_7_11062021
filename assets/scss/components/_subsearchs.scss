@@ -1,11 +1,17 @@
-#ingredients__taglist {
-  background-color: $primary;
+#sub-search__Ingrédient{
+  .sub-search__button, input, .sub-search__taglist{
+    background-color: $primary;
+  }
 }
-#appliances__taglist {
-  background-color: $success;
+#sub-search__Appareils{
+  .sub-search__button, input, .sub-search__taglist{
+    background-color: $teal;
+  }
 }
-#ustensils__taglist {
-  background-color: $secondary;
+#sub-search__Ustensiles{
+  .sub-search__button, input, .sub-search__taglist{
+    background-color: $secondary;
+  }
 }
 
 .dropdown-item {
@@ -41,6 +47,40 @@
   padding-left: 0;
   padding-top: 0;
   padding-bottom: 0;
+}
+
+/*Arrow section*/
+.arrow {
+  position: relative;
+  height: 15px;
+  width: 15px;
+  z-index: 2;
+}
+.arrow::before,
+.arrow::after {
+  content: "";
+  position: absolute;
+  width: 0.15rem;
+  height: 100%;
+  transition: all 0.5s;
+}
+.arrow::before {
+  left: -3px;
+  transform: rotate(45deg);
+  background-color: #fff;
+}
+.arrow::after {
+  right: 6px;
+  transform: rotate(-45deg);
+  background-color: #fff;
+}
+.show .arrow::before {
+  left: -3px;
+  transform: rotate(-45deg);
+}
+.show .arrow::after {
+  right: 6px;
+  transform: rotate(45deg);
 }
 
 /*Filters colors
@@ -166,38 +206,5 @@
   }
 }
 */
-.sub-search__wrapper {
-}
-/*Arrow section*/
-.arrow {
-  position: relative;
-  height: 15px;
-  width: 15px;
-  z-index: 2;
-}
-.arrow::before,
-.arrow::after {
-  content: "";
-  position: absolute;
-  width: 0.15rem;
-  height: 100%;
-  transition: all 0.5s;
-}
-.arrow::before {
-  left: -3px;
-  transform: rotate(45deg);
-  background-color: #fff;
-}
-.arrow::after {
-  right: 6px;
-  transform: rotate(-45deg);
-  background-color: #fff;
-}
-.show .arrow::before {
-  left: -3px;
-  transform: rotate(-45deg);
-}
-.show .arrow::after {
-  right: 6px;
-  transform: rotate(45deg);
-}
+
+
