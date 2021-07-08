@@ -19,7 +19,8 @@
     </header>
     <!-- MAIN -->
     <main class="container">
-      <section role="banner" class="row gx-0 position-relative mb-3 justify-content-between align-items-center">        <input
+      <section role="banner" class="row gx-0 position-relative mb-3 justify-content-between align-items-center">
+        <input
           class="col-12 btn btn-lg bg-light text-left text-truncate"
           type="search"
           id="main-search"
@@ -49,20 +50,38 @@
           <span class="tag btn btn-primary btn-sm mb-1">auto-cuiseur<i class="far fa-times-circle"></i></span>
         </div>
       </section>
-      <!-- FILTERS SECTION-->
-      <section id="sub-search" class="row justify-content-between justify-content-lg-start align-items-center">
-        <!-- Ingredients Sub Search -->
-        <div id="sub-search__ingredients" class="col-12 col-lg-3 mb-3 dropdown d-flex justify-content-between align-items-center">
+      <!-- SUB SEARCHS SECTION-->
+      <section id="sub-searchs" class="row justify-content-between justify-content-lg-start">
+        <!-- Ingredients Sub Search 
+        <div
+          id="sub-search__ingredients"
+          class="sub-search__bloc col-12 col-lg-3 mb-3 dropdown d-flex flex-column justify-content-between align-items-center"
+        >
           <button
-            class="col btn btn-lg btn-primary text-white text-left font-weight-bold d-flex justify-content-between align-items-center"
+            class="
+              sub-search__button
+              w-100
+              mw-100
+              col
+              btn btn-lg btn-primary
+              text-white text-left
+              font-weight-bold
+              d-flex
+              justify-content-between
+              align-items-center
+            "
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
             <strong>Ingrédients</strong><span class="arrow col-1 end-0"></span>
           </button>
-          <ul id="ingredients__taglist" class="sub-search__taglist col-12 dropdown-menu btn-primary text-white border-0 rounded-bottom" role="listbox">
+          <ul
+            id="ingredients__taglist"
+            class="sub-search__taglist w-100 mw-100 dropdown-menu btn-primary text-white border-0 rounded-bottom"
+            role="listbox"
+          >
             <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
+            <li class="dropdown-item" aria-selected="false" role="option">thon en miettes</li>
             <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
             <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
             <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
@@ -71,66 +90,13 @@
             <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
             <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
             <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
+            <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
             <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
             <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
             <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
             <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
             <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
             <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
-            <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
-            <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
             <li class="dropdown-item" aria-selected="false" role="option">Dashi</li>
             <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
             <li class="dropdown-item" aria-selected="false" role="option">tofu</li>
@@ -138,40 +104,73 @@
             <li class="dropdown-item" aria-selected="false" role="option">Nori</li>
           </ul>
         </div>
-        <!-- Appliances Sub Search -->
-        <div id="sub-search__appliances" class="col-12 col-lg-3 mb-3 dropdown d-flex justify-content-between align-items-center">
-          <a
-            class="col btn btn-lg btn-success text-white text-left d-flex justify-content-between align-items-center"
-            href="#"
-            role="button"
+        Appliances Sub Search
+        <div
+          id="sub-search__appliances"
+          class="sub-search__bloc col-12 col-lg-3 mb-3 dropdown d-flex flex-column justify-content-between align-items-center"
+        >
+          <div
+            class="sub-search__button d-flex w-100 mw-100 col btn btn-lg btn-success justify-content-between align-items-center"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <input class="col btn btn-lg btn-success text-white text-left font-weight-bold" type="button" value="Appareils" />
+            <span class="arrow col-1 end-0"></span>
+          </div>
+          <ul
+            id="appliances__taglist"
+            class="sub-search__taglist w-100 mw-100 dropdown-menu btn-success text-white border-0 rounded-bottom"
+            role="listbox"
+          >
+            <li class="dropdown-item" aria-selected="false" role="option">Mixeur</li>
+            <li class="dropdown-item" aria-selected="false" role="option">Four</li>
+            <li class="dropdown-item" aria-selected="false" role="option">Blender</li>
+          </ul>
+        </div>
+        Appliances Sub Search
+        <div id="sub-search__appliances" class="sub-search__bloc col-12 col-lg-3 mb-3 dropdown d-flex flex-column justify-content-between align-items-center">
+          <button
+            class="sub-search__button w-100 mw-100 col btn btn-lg btn-success text-white text-left font-weight-bold d-flex justify-content-between align-items-center"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
             <strong>Appareils</strong><span class="arrow col-1 end-0"></span>
-          </a>
-          <ul id="appliances__taglist" class="sub-search__taglist dropdown-menu btn-primary text-white" role="listbox">
+          </button>
+          <ul id="appliances__taglist" class="sub-search__taglist w-100 mw-100 dropdown-menu btn-success text-white border-0 rounded-bottom" role="listbox">
             <li class="dropdown-item" aria-selected="false" role="option">Mixeur</li>
             <li class="dropdown-item" aria-selected="false" role="option">Four</li>
             <li class="dropdown-item" aria-selected="false" role="option">Blender</li>
           </ul>
         </div>
-        <!-- Ustensils Sub Search -->
-        <div id="sub-search__ustensils" class="col-12 col-lg-3 mb-3 dropdown d-flex justify-content-between align-items-center">
-          <a
-            class="col btn btn-lg btn-secondary text-white text-left d-flex justify-content-between align-items-center"
-            href="#"
-            role="button"
+         Ustensils Sub Search
+        <div
+          id="sub-search__ustensils"
+          class="sub-search__bloc col-12 col-lg-3 mb-3 dropdown d-flex flex-column justify-content-between align-items-center"
+        >
+          <button
+            class="
+              sub-search__button
+              w-100
+              mw-100
+              col
+              btn btn-lg btn-secondary
+              text-white text-left
+              font-weight-bold
+              d-flex
+              justify-content-between
+              align-items-center
+            "
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <strong>Ustensiles</strong><span class="arrow col-1 end-0"></span>
-          </a>
-          <ul id="ustensils__taglist" class="sub-search__taglist dropdown-menu btn-primary text-white" role="listbox">
+            <strong>Ingrédients</strong><span class="arrow col-1 end-0"></span>
+          </button>
+          <ul id="ustensils__taglist" class="sub-search__taglist w-100 mw-100 dropdown-menu text-white border-0 rounded-bottom" role="listbox">
             <li class="dropdown-item" aria-selected="false" role="option">Mixeur</li>
             <li class="dropdown-item" aria-selected="false" role="option">Four</li>
             <li class="dropdown-item" aria-selected="false" role="option">Blender</li>
           </ul>
-        </div>
+        </div> -->
       </section>
 
       <!-- RECIPES SECTION -->
@@ -181,7 +180,7 @@
           <div class="card-body d-flex flex-column justify-content-start rounded-bottom">
             <div class="row d-flex justify-content-between">
               <h2 class="card-title col-8 col-sm-9 col-md-7 col-xl-8">Shoyu ramen</h2>
-              <h2 class="col"><i class="far fa-clock"></i> 80 min</h3>
+              <h2 class="col"><i class="far fa-clock"></i> 80 min</h2>
             </div>
             <div class="row justify-content-between align-items-start">
               <ul class="card-text col-6 list-unstyled">
