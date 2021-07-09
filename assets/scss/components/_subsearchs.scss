@@ -35,7 +35,9 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  
 }
 .dropdown-menu.show {
   display: flex;

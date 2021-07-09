@@ -1,5 +1,12 @@
 @import "./main.scss";
 
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #192a56 transparent;
+}
+
+
 
 #main-search {
   text-align: left;
