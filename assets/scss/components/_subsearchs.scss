@@ -20,7 +20,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   @include media-breakpoint-up(xl) {
-    width: auto;
+    width: 33%;
   }
 }
 
@@ -28,16 +28,14 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   cursor: pointer;
-  max-height: 400px;
+  max-height: 350px;
   position: static !important;
   transform: translateY(-5px) !important;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  
+  overflow: hidden;
 }
 .dropdown-menu.show {
   display: flex;
