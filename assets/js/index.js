@@ -3,6 +3,10 @@ import 'bootstrap';
 // Import data
 import { recipes } from '/recipes.js'
 
+//DOM Selector
+const tagContainer = document.querySelector('.tag-container');
+const mainsearchInput = document.querySelector('#main-search');
+console.log(mainsearchInput.value)
 //ARRAYS
 // Defines Array
 let ingredientsArray = [];
@@ -168,4 +172,53 @@ const setRecipes = (recipes) => {
   });
 };
 setRecipes(recipes);
+
+// Create tags
+let researchTags = [];
+
+// Elements and style for tags
+const createTag = (label) => {
+  const span = document.createElement('span');
+  span.classList.add('tag', 'btn', 'btn-primary', 'btn-sm', 'mb-1', 'mr-3');
+  span.innerHTML = label;
+  const closeBtn = document.createElement('i');
+  closeBtn.classList.add('far', 'fa-times-circle');
+  closeBtn.setAttribute('data-item', label);
+  span.appendChild(closeBtn);
+  return span;
+};
+
+// Reset to avoid cumulated tags
+const reset = () => {
+  document.querySelectorAll('.tag').forEach( tag =>{
+    tag.parentElement.removeChild(tag);
+  });
+};
+
+// Add tags in tag container
+const addTags = () => {
+  reset();
+  researchTags.slice().reverse().forEach(tag => {
+    tagContainer.prepend(createTag(tag));
+  });
+};
+
+// Add tags in array
+mainsearchInput.addEventListener('keyup', function(e){
+  if (e.key == 'Enter') {
+    researchTags.push(mainsearchInput.value);
+    addTags();
+    mainsearchInput.value = '';
+  };
+});
+
+// Remove tags of the array
+document.addEventListener('click', (e) => {
+  if(e.target.tagName == 'I') {
+    const value = e.target.getAttribute('data-item');
+    const index = researchTags.indexOf(value);
+    researchTags = [...researchTags.slice(0, index), ...researchTags.slice(index + 1)];
+    addTags();
+  };
+});
 
