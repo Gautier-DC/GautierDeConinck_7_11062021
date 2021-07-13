@@ -29,12 +29,18 @@ let subsearchNames = ['Ingrédient', 'Appareils', 'Ustensiles'];
 
 // Remove open class and reset state
 const removeOpen = (elt, subsearchBloc, inputField, currentButton) => {
+  if (inputField.value.length >= 3) {
+  currentButton.classList.remove('open');
+  subsearchBloc.classList.remove('col-lg-6');
+  subsearchBloc.classList.add('col-lg-3');
+  } else {
   currentButton.classList.remove('open');
   inputField.removeAttribute('type');
   inputField.setAttribute('type','button');
   inputField.setAttribute('value',elt);
   subsearchBloc.classList.remove('col-lg-6');
   subsearchBloc.classList.add('col-lg-3');
+  }
 }
 
 // Build all sub searchs parts
@@ -42,6 +48,7 @@ const buildSubsearchBtn = (subsearchList) => {
   subsearchList.forEach(elt => {
     let subsearchBloc = document.createElement('div');
     subsearchBloc.setAttribute('id', 'sub-search__' + elt);
+    subsearchBloc.setAttribute('data-name', elt);
     subsearchBloc.classList.add('sub-search__bloc', 'col-12', 'col-lg-3', 'mb-3', 'dropdown', 'd-flex', 'flex-column', 'justify-content-between', 'align-items-center');
     subsearchBloc.innerHTML = `
     <div
@@ -61,14 +68,20 @@ const buildSubsearchBtn = (subsearchList) => {
     document.getElementById('sub-searchs').append(subsearchBloc)
     // Show tag list in sub searchs and transform the button into search input field
     const currentButton = subsearchBloc.querySelector('.sub-search__button');
-    let inputField = subsearchBloc.querySelector('.sub-search__button input');   
+    let inputField = subsearchBloc.querySelector('.sub-search__button input');
     currentButton.onclick = function(ev){
-      ev.stopPropagation();
-      if(currentButton.classList.contains('open') && inputField.value.length < 3){
+      if(currentButton.classList.contains('open')){
         // show mode => remove open class and reset state
+        console.log('show mode click')
         removeOpen(elt, subsearchBloc, inputField, currentButton);
       } else{
         // closed mode => add open class and transform input type in search
+        subsearchList.forEach(element => {
+          const subsearchBloc = document.getElementById('sub-search__' + element);
+          const currentButton = subsearchBloc.querySelector('.sub-search__button');
+          const inputField = subsearchBloc.querySelector('.sub-search__button input');
+          removeOpen(element, subsearchBloc, inputField, currentButton);
+        });
         currentButton.classList.add('open');
         inputField.removeAttribute('value');
         inputField.setAttribute('type','search');
@@ -84,11 +97,12 @@ buildSubsearchBtn(subsearchNames);
 
 // Remove open when click outside of the button 
 window.addEventListener( 'click', function(event) {
-  if (event.target.className !== 'sub-search__button') {
+  const clickOnBloc = event.target.closest('.sub-search__bloc');
+  if (!clickOnBloc) {
     subsearchNames.forEach(element => {
       const subsearchBloc = document.getElementById('sub-search__' + element);
-      const currentButton = subsearchBloc.querySelector('.sub-search__button')
-      const inputField = subsearchBloc.querySelector('.sub-search__button input')
+      const currentButton = subsearchBloc.querySelector('.sub-search__button');
+      const inputField = subsearchBloc.querySelector('.sub-search__button input');
       removeOpen(element, subsearchBloc, inputField, currentButton);
     });
   };
@@ -137,13 +151,13 @@ const setRecipes = (recipes) => {
               <h2 class="col"><i class="far fa-clock"></i> ${recipe.time} min</h2>
             </div>
             <div class="row justify-content-between align-items-start">
-              <ul class="card-text col-6 list-unstyled">`;
+              <ul class="card-text col-6 list-unstyled line-clamp">`;
     recipe.ingredients.forEach(ing => {
       recipeHTML += `<li><strong>${ing.ingredient} :</strong> ${ing.quantity ? ing.quantity : ''} ${ing.unit ? ing.unit : ''} </li>`
     });
     recipeHTML += `
           </ul>
-          <p class="card-text col-6">
+          <p class="card-text col-6 line-clamp">
             ${recipe.description}
           </p>
         </div>

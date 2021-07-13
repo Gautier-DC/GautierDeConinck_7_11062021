@@ -1,12 +1,10 @@
 @import "./main.scss";
 
-/* Works on Firefox */
+
 * {
   scrollbar-width: thin;
   scrollbar-color: #192a56 transparent;
 }
-
-
 
 #main-search {
   text-align: left;
@@ -45,105 +43,22 @@ article{
     }    
   }
   div:nth-of-type(2){
-    height: 70%;
+    height: 100%;
     overflow: hidden;
   }
   ul,p{
-    display: block; /* Fallback for non-webkit*/ 
-    display: -webkit-box;
-    height: $line-height*$lines-to-show;
     font-size: 0.82rem;
-    line-height: 1.2em;
-    -webkit-line-clamp: $lines-to-show;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: -o-ellipsis-lastline;
-    text-overflow: ellipsis;
     flex-basis: 48%;
   }
+}
+
+.line-clamp{
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
 
 .btn:focus{
   box-shadow: none;
 }
-
-
- /* button {
-    position: absolute;
-    right: 2em;
-    background: none;
-    border: none;
-    color: #474747;
-    height: 69px;
-    font-size: 2em;
-  }
-}
-
-#recipes {
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  @include tablet-landscape{
-    flex-direction: row;
-  }
-  .recipe__card {
-    background-color: $bg-recipe;
-    border-radius: $border-radius;
-    height: 364px;
-    margin-bottom: 3em;
-    justify-content: space-between;
-    align-items: center;
-    flex-basis: 100%;
-    @include tablet-landscape{
-      flex-basis: 48%;
-    }
-    @include desktop{
-      flex-basis: 31%;
-    }
-  }
-  figure {
-    width: 100%;
-    flex-basis: 178px;
-    background-color: $bg-recipe-pic;
-    border-radius: $border-radius $border-radius 0 0;
-    margin: 0;
-  }
-}
-
-.recipe__description {
-  padding: 0.8em;
-  height: 178px;
-  .main-info {
-    justify-content: space-between;
-    align-items: center;
-    flex: 0 0 15%;
-    h2 {
-      font-size: map-get($font-size, main-info);
-      font-weight: 400;
-    }
-    .time {
-      font-size: map-get($font-size, main-info);
-      font-weight: bold;
-    }
-  }
-  .detailed-info {
-    margin-top: 1em;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex: 0 0 75%;
-    .ingredient-list, p {
-      display: block; /* Fallback for non-webkit 
-      display: -webkit-box;
-      height: $line-height*$lines-to-show;
-      font-size: map-get($font-size, det-info);
-      line-height: 1.5em;
-      -webkit-line-clamp: $lines-to-show;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: -o-ellipsis-lastline;
-      text-overflow: ellipsis;
-      flex-basis: 48%;
-    }
-  }
-}*/

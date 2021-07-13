@@ -47,6 +47,11 @@
   padding-left: 0;
   padding-top: 0;
   padding-bottom: 0;
+  width: 100%;
+}
+
+.sub-search__button input::placeholder{
+  color: rgba(#fff , 0.7);
 }
 
 /*Arrow section*/
@@ -66,145 +71,22 @@
 }
 .arrow::before {
   left: -3px;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
   background-color: #fff;
 }
 .arrow::after {
   right: 6px;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
   background-color: #fff;
 }
 .show .arrow::before {
   left: -3px;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
 }
 .show .arrow::after {
   right: 6px;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
 }
 
-/*Filters colors
-#ingredients-filter-button,
-#ingredients-options-list,
-#ingredient-search {
-  background-color: $ingredient-color;
-  flex-basis: 100%;
-}
-#ustensils-filter-button,
-#ustensils-options-list,
-#ustensils-search {
-  background-color: $ustensils-color;
-  flex-basis: 100%;
-}
-#appliances-filter-button,
-#appliances-options-list,
-#appliances-search {
-  background-color: $appliance-color;
-  flex-basis: 100%;
-}
-
-/*Filters shape
-#filters {
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  @include desktop {
-    flex-direction: row;
-  }
-  .option-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    height: 50px;
-    width: 100%;
-    margin-bottom: 1em;
-    @include desktop {
-      height: 69px;
-      width: 20em;
-      margin-right: 1em;
-    }
-    .open {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: all;
-      
-    }
-    .filters-button {
-      border-radius: $border-radius;
-      padding: 0.7em 0.5em 0.7em 0.7em;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      flex-basis: 100%;
-      border: none;
-      @include desktop {
-        padding-left: 1.5em;
-      }
-    }
-    .dropdown-content{
-      position: absolute;
-      top: 44px;
-      left: 0;
-      color: #fff;
-      width: 100%;
-      max-height: 200px;
-      border-radius: 0 0 $border-radius $border-radius;
-      padding: 1.5em;
-      padding-top: 0;
-      opacity: 0;
-      visibility: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: space-between;
-      flex-wrap: wrap;
-      @include desktop {
-        top: 63px;
-        max-height: 400px;
-      }
-      .open {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: all;
-      }
-      .option {
-        flex-basis: 35%;
-        position: relative;
-        display: block;
-        cursor: pointer;
-        transition: all 0.5s;
-      }
-    }
-    .filter-name{
-      display: inline-block;
-      border: none;
-      color: #fff;
-      font-size: 1.3em;
-      font-weight: bold;
-      width: 100%;
-      text-align: left;
-    }
-    input {
-      border: none;
-      color: #fff;
-      font-size: 1.3em;
-      font-weight: bold;
-      width: 100%;
-      height: 100%;
-      line-height: 2em;
-      padding-right: 2em;
-      &:focus{
-        border: none;
-      }
-      &::placeholder{
-        overflow: visible;
-        text-overflow: ellipsis;
-      }     
-    }    
-  }
-}
-*/
 
 
