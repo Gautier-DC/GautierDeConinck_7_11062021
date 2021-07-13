@@ -1,0 +1,64 @@
+@import "./main.scss";
+
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #192a56 transparent;
+}
+
+#main-search {
+  text-align: left;
+  cursor: auto;
+  padding-right: 5rem;
+}
+
+.tag{
+  color: white;
+  &:hover{
+    color: white;    
+  }
+  i{
+    margin-left: 0.6rem;
+  }
+}
+
+article{
+  height: 364px;
+  flex-basis: 380px;
+  figure{
+    height: 178px;
+    background-color: $bg-recipe-pic;
+  }
+  div:first-of-type{
+    height: 186px;
+    background-color: $bg-recipe;
+    font-size: 0.82rem;
+  }
+  div:nth-of-type(1){
+    height: 28%;
+    h2:nth-of-type(2){
+      text-align: right;
+      font-weight: bold;
+      padding-left: 0;
+    }    
+  }
+  div:nth-of-type(2){
+    height: 100%;
+    overflow: hidden;
+  }
+  ul,p{
+    font-size: 0.82rem;
+    flex-basis: 48%;
+  }
+}
+
+.line-clamp{
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.btn:focus{
+  box-shadow: none;
+}
