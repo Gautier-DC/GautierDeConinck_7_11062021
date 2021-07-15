@@ -1,4 +1,5 @@
 import 'bootstrap';
+import { Dropdown } from 'bootstrap';
 
 // Import data
 import { recipes } from '/recipes.js'
@@ -6,7 +7,7 @@ import { recipes } from '/recipes.js'
 //DOM Selector
 const tagContainer = document.querySelector('.tag-container');
 const mainsearchInput = document.querySelector('#main-search');
-console.log(mainsearchInput.value)
+
 //ARRAYS
 // Defines Array
 let ingredientsArray = [];
@@ -204,13 +205,14 @@ const addTags = () => {
 };
 
 // Add tags in array
-mainsearchInput.addEventListener('keyup', function(e){
-  if (e.key == 'Enter') {
-    researchTags.push(mainsearchInput.value);
+let dropdownItems = document.getElementsByClassName('dropdown-item');
+Array.from(dropdownItems).forEach(dropdownItem => {
+  dropdownItem.addEventListener('click', function(e){
+    researchTags.push(dropdownItem.innerText);
     addTags();
-    mainsearchInput.value = '';
-  };
+  });
 });
+
 
 // Remove tags of the array
 document.addEventListener('click', (e) => {
@@ -221,4 +223,7 @@ document.addEventListener('click', (e) => {
     addTags();
   };
 });
+
+
+// First search algorythme
 
