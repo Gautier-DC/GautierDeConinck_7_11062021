@@ -7,6 +7,7 @@ import { recipes } from '/recipes.js'
 //DOM Selector
 const tagContainer = document.querySelector('.tag-container');
 const mainsearchInput = document.querySelector('#main-search');
+let filteredRecipes = recipes;
 
 //ARRAYS
 // Defines Array
@@ -146,6 +147,8 @@ for (let i = 0; i < ulLength(uniqueUstensils); i++){
 
 // create recipes
 const setRecipes = (recipes) => {
+  document.querySelector('#recipes').innerHTML = '';
+  console.log('la fonction', recipes)
   recipes.forEach(recipe => {
     let recipeHTML = `
     <article class="card col-12 col-md-6 col-lg-4 border-0">
@@ -172,7 +175,7 @@ const setRecipes = (recipes) => {
     document.querySelector('#recipes').insertAdjacentHTML('beforeend', recipeHTML);
   });
 };
-setRecipes(recipes);
+setRecipes(filteredRecipes);
 
 // Create tags
 let researchTags = [];
@@ -225,5 +228,39 @@ document.addEventListener('click', (e) => {
 });
 
 
-// First search algorythme
+// FIRST ALGORYTHME SEARCH
 
+// Clean up string function
+const cleanUpString = (str) => {
+  let handledStr = str.toLowerCase();
+  handledStr = handledStr.normalize('NFD').replace(/\p{Diacritic}/gu, "");
+  return handledStr;
+}
+
+
+// Main search
+mainsearchInput.onchange = () => {
+  if(mainsearchInput.value.length >= 3){
+    let mainSearch = cleanUpString(mainsearchInput.value);
+    console.log('yo', mainSearch);
+    filteredRecipes = recipes.filter( recipe => {
+      for (let i = 0; i < recipe.ingredients.length; i++){
+        for (let j = 0; j < recipe.ustensils.length; j++){
+          if (
+            cleanUpString(recipe.name).includes(mainSearch) ||
+            cleanUpString(recipe.appliance).includes(mainSearch) ||
+            cleanUpString(recipe.ingredients[i].ingredient).includes(mainSearch) ||
+            cleanUpString(recipe.ustensils[j]).includes(mainSearch) ||
+            cleanUpString(recipe.description).includes(mainSearch)
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        };
+      };
+    });
+    setRecipes(filteredRecipes);
+    console.log('results', filteredRecipes);
+  };
+};
