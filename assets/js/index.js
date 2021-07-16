@@ -7,27 +7,15 @@ import { recipes } from '/recipes.js'
 //DOM Selector
 const tagContainer = document.querySelector('.tag-container');
 const mainsearchInput = document.querySelector('#main-search');
+const recipesSection = document.querySelector('#recipes');
 let filteredRecipes = recipes;
+let dropdownItems = document.getElementsByClassName('dropdown-item');
 
 //ARRAYS
-// Defines Array
 let ingredientsArray = [];
 let appliancesArray = [];
 let ustensilsArray = [];
-// Push tags in their respective array
-recipes.forEach(recipe => {
-  recipe.ingredients.forEach((currentIngredient) => {
-    ingredientsArray.push(currentIngredient.ingredient);
-  });
-  appliancesArray.push(recipe.appliance);
-  recipe.ustensils.forEach((currentUstensil) => {
-    ustensilsArray.push(currentUstensil);
-  });
-});
-// Filter duplicate tags
-const uniqueIngredients = [...new Set(ingredientsArray)];
-const uniqueAppliances = [...new Set(appliancesArray)];
-const uniqueUstensils = [...new Set(ustensilsArray)];
+
 // Appliances Array
 
 //Create sub search button & list
@@ -78,7 +66,6 @@ const buildSubsearchBtn = (subsearchList) => {
     currentButton.onclick = function(ev){
       if(currentButton.classList.contains('open')){
         // show mode => remove open class and reset state
-        console.log('show mode click')
         removeOpen(elt, subsearchBloc, inputField, currentButton);
       } else{
         // closed mode => add open class and transform input type in search
@@ -115,40 +102,80 @@ window.addEventListener( 'click', function(event) {
 });
 
 // Add tags in susbsearch (max 30 items)
+
 // Define a maximum of 30 items
 const ulLength = (array) =>{
   return(array.length > 30 ? 30 : array.length);
 }
+
+// Push tags in their respective array
+const pushInArray = (displayedRecipes) => {
+  ingredientsArray = [];
+  appliancesArray = [];
+  ustensilsArray = [];
+  displayedRecipes.forEach(recipe => {
+    recipe.ingredients.forEach((currentIngredient) => {
+      ingredientsArray.push(currentIngredient.ingredient);
+    });
+    appliancesArray.push(recipe.appliance);
+    recipe.ustensils.forEach((currentUstensil) => {
+      ustensilsArray.push(currentUstensil);
+    });
+  });
+  // Filter duplicate tags
+  ingredientsArray = [...new Set(ingredientsArray)];
+  appliancesArray = [...new Set(appliancesArray)];
+  ustensilsArray = [...new Set(ustensilsArray)];
+} 
+pushInArray(filteredRecipes);
 // Create li for each tag and add it in there respective ul
-for (let i = 0; i < ulLength(uniqueIngredients); i++){
-  let ingTag = document.createElement('li');
-  ingTag.classList.add('dropdown-item');
-  ingTag.setAttribute('aria-selected', 'false');
-  ingTag.setAttribute('role', 'option');
-  ingTag.innerHTML = uniqueIngredients[i];
-  document.getElementById('Ingrédient__taglist').append(ingTag);
+
+// Add tags in array
+const addEventToTag = (tag) => {
+  tag.addEventListener('click', function(e){
+    researchTags.push(tag.innerText);
+    addTags();
+  });
+}
+
+const buildTagLists = () => {
+  document.getElementById('Ingrédient__taglist').innerHTML = '';
+  for (let i = 0; i < ulLength(ingredientsArray); i++){
+    let ingTag = document.createElement('li');
+    ingTag.classList.add('dropdown-item');
+    ingTag.setAttribute('aria-selected', 'false');
+    ingTag.setAttribute('role', 'option');
+    ingTag.innerHTML = ingredientsArray[i];
+    document.getElementById('Ingrédient__taglist').append(ingTag);
+    addEventToTag(ingTag);
+  };
+  document.getElementById('Appareils__taglist').innerHTML = '';
+  for (let i = 0; i < ulLength(appliancesArray); i++){
+    let aplTag = document.createElement('li');
+    aplTag.classList.add('dropdown-item');
+    aplTag.setAttribute('aria-selected', 'false');
+    aplTag.setAttribute('role', 'option');
+    aplTag.innerHTML = appliancesArray[i];
+    document.getElementById('Appareils__taglist').append(aplTag);
+    addEventToTag(aplTag);
+  };
+  document.getElementById('Ustensiles__taglist').innerHTML = '';
+  for (let i = 0; i < ulLength(ustensilsArray); i++){
+    let ustTag = document.createElement('li');
+    ustTag.classList.add('dropdown-item');
+    ustTag.setAttribute('aria-selected', 'false');
+    ustTag.setAttribute('role', 'option');
+    ustTag.innerHTML = ustensilsArray[i];
+    document.getElementById('Ustensiles__taglist').append(ustTag);
+    addEventToTag(ustTag);
+  };
 };
-for (let i = 0; i < ulLength(uniqueAppliances); i++){
-  let aplTag = document.createElement('li');
-  aplTag.classList.add('dropdown-item');
-  aplTag.setAttribute('aria-selected', 'false');
-  aplTag.setAttribute('role', 'option');
-  aplTag.innerHTML = uniqueAppliances[i];
-  document.getElementById('Appareils__taglist').append(aplTag);
-};
-for (let i = 0; i < ulLength(uniqueUstensils); i++){
-  let ustTag = document.createElement('li');
-  ustTag.classList.add('dropdown-item');
-  ustTag.setAttribute('aria-selected', 'false');
-  ustTag.setAttribute('role', 'option');
-  ustTag.innerHTML = uniqueUstensils[i];
-  document.getElementById('Ustensiles__taglist').append(ustTag);
-};
+buildTagLists();
 
 // create recipes
 const setRecipes = (recipes) => {
   document.querySelector('#recipes').innerHTML = '';
-  console.log('la fonction', recipes)
+  console.log('créer les recettes', recipes)
   recipes.forEach(recipe => {
     let recipeHTML = `
     <article class="card col-12 col-md-6 col-lg-4 border-0">
@@ -172,7 +199,7 @@ const setRecipes = (recipes) => {
       </div>
     </article>
     `;
-    document.querySelector('#recipes').insertAdjacentHTML('beforeend', recipeHTML);
+    recipesSection.insertAdjacentHTML('beforeend', recipeHTML);
   });
 };
 setRecipes(filteredRecipes);
@@ -207,15 +234,6 @@ const addTags = () => {
   });
 };
 
-// Add tags in array
-let dropdownItems = document.getElementsByClassName('dropdown-item');
-Array.from(dropdownItems).forEach(dropdownItem => {
-  dropdownItem.addEventListener('click', function(e){
-    researchTags.push(dropdownItem.innerText);
-    addTags();
-  });
-});
-
 
 // Remove tags of the array
 document.addEventListener('click', (e) => {
@@ -242,7 +260,6 @@ const cleanUpString = (str) => {
 mainsearchInput.onchange = () => {
   if(mainsearchInput.value.length >= 3){
     let mainSearch = cleanUpString(mainsearchInput.value);
-    console.log('yo', mainSearch);
     filteredRecipes = recipes.filter( recipe => {
       for (let i = 0; i < recipe.ingredients.length; i++){
         for (let j = 0; j < recipe.ustensils.length; j++){
@@ -254,13 +271,20 @@ mainsearchInput.onchange = () => {
             cleanUpString(recipe.description).includes(mainSearch)
           ) {
             return true;
-          } else {
+          } else {            
             return false;
           }
         };
       };
     });
     setRecipes(filteredRecipes);
-    console.log('results', filteredRecipes);
+    if (recipesSection.childNodes.length == 0){
+      let errorMsg = document.createElement('p');
+      errorMsg.classList.add('recipes__errormsg', 'col','font-weight-bold', 'text-center');
+      errorMsg.innerHTML = 'Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes », « poisson », etc.';
+      recipesSection.appendChild(errorMsg);
+    }
+    pushInArray(filteredRecipes);
+    buildTagLists();
   };
 };
