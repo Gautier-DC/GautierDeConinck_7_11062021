@@ -288,3 +288,37 @@ mainsearchInput.onchange = () => {
     buildTagLists();
   };
 };
+// Sub search
+const ingredientSearchInput = document.querySelector("#sub-search__Ingrédient input[type='search']");
+ingredientSearchInput.onchange = () => {
+  if(ingredientSearchInput.value.length >= 3){
+    console.log('ingredient', ingredientSearchInput)
+    let subSearch = cleanUpString(ingredientSearchInput.value);
+    filteredRecipes = recipes.filter( recipe => {
+      for (let i = 0; i < recipe.ingredients.length; i++){
+        for (let j = 0; j < recipe.ustensils.length; j++){
+          if (
+            cleanUpString(recipe.name).includes(subSearch) ||
+            cleanUpString(recipe.appliance).includes(subSearch) ||
+            cleanUpString(recipe.ingredients[i].ingredient).includes(subSearch) ||
+            cleanUpString(recipe.ustensils[j]).includes(subSearch) ||
+            cleanUpString(recipe.description).includes(subSearch)
+          ) {
+            return true;
+          } else {            
+            return false;
+          }
+        };
+      };
+    });
+    setRecipes(filteredRecipes);
+    if (recipesSection.childNodes.length == 0){
+      let errorMsg = document.createElement('p');
+      errorMsg.classList.add('recipes__errormsg', 'col','font-weight-bold', 'text-center');
+      errorMsg.innerHTML = 'Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes », « poisson », etc.';
+      recipesSection.appendChild(errorMsg);
+    }
+    pushInArray(filteredRecipes);
+    buildTagLists();
+  };
+};
