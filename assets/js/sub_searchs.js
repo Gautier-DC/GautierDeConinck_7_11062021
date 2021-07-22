@@ -61,11 +61,26 @@ export const buildSubsearchBtn = (subsearchList) => {
          * Onclick add it to tag container and to the research array
         */
         const ingredientSearchInput = document.querySelector("#sub-search__Ingrédient input[type='search']");
-        ingredientSearchInput.onkeyup = () => {
-          if(ingredientSearchInput.value.length >= 1){
-            console.log('sub search input')
-          }
-        };
+        let subRecipes = recipes;
+        const subList = (inputField) =>{
+          inputField.onkeyup = () => {
+            if(inputField.value.length >= 1){
+              console.log('sub search input', inputField.value)
+              subRecipes = subRecipes.filter( recipe => {
+                for (let i = 0; i < recipe.ingredients.length; i++){
+                  if(cleanUpString(recipe.ingredients[i].ingredient).includes(ingredientSearchInput.value)){
+                    return true;
+                  } else {
+                    return false;
+                  }
+                }
+              });
+            }
+            pushInArray(subRecipes);
+            buildItemLists();
+          };
+        }
+        subList(ingredientSearchInput);
       };
     };
   });

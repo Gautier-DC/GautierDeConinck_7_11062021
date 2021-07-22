@@ -11,7 +11,7 @@ export let dropdownItems = document.getElementsByClassName('dropdown-item');
 export let subsearchNames = ['Ingrédient', 'Appareils', 'Ustensiles'];
 
 //Array for the search
-export let currentSearch = [];
+export const currentSearch = [];
 
 // Array used to create tags
 export let researchTags = [];

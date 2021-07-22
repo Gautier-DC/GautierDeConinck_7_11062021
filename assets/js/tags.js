@@ -1,3 +1,4 @@
+import { recipes } from '/recipes.js'
 import { researchTags } from "./variables";
 import { tagContainer } from "./variables";
 import { currentSearch } from "./variables";
