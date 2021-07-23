@@ -1,12 +1,8 @@
-import { recipes } from '/recipes.js'
-import { researchTags } from "./variables";
-import { tagContainer } from "./variables";
-import { currentSearch } from "./variables";
+import { tagContainer, currentSearch } from "./variables";
+import { search } from "./search";
 
-//Arrays for items lists
-let ingredientsArray = [];
-let appliancesArray = [];
-let ustensilsArray = [];
+// Array used to create tags
+let researchTags = [];
 
 /**
  * Define the behavior of tags that are displayed in item list of each sub search.
@@ -50,8 +46,10 @@ const addTags = () => {
 document.addEventListener('click', (e) => {
     if(e.target.tagName == 'I') {
         const value = e.target.getAttribute('data-item');
-        const index = researchTags.indexOf(value);
-        researchTags = [...researchTags.slice(0, index), ...researchTags.slice(index + 1)];
+        const indexTag = researchTags.indexOf(value);
+        researchTags = [...researchTags.slice(0, indexTag), ...researchTags.slice(indexTag + 1)];
+        console.log('after delete', researchTags)
+        search(researchTags);
         addTags();
     };
 });
@@ -60,87 +58,13 @@ document.addEventListener('click', (e) => {
  * Add tags to arrays (the one that display tags and the one that filter the recipes)
  * @param {string}
  */ 
-const addEventToTag = (tag) => {
+export const addEventToTag = (tag) => {
     tag.addEventListener('click', function(e){
         researchTags.push(tag.innerText);
-        currentSearch.push(tag.innerText);
         addTags();
+        search(researchTags);
+        console.log('tag click currentsearch', currentSearch)
     });
 };
 
 
-/**
- * ITEM LIST OF EACH SUB SEARCH SECTION
- * Add item list in each sub search (max 30 items)
- */
-
-/**
- * Define a maximum of 30 items
- * @param {array}
- */ 
-const ulLength = (array) =>{
-    return(array.length > 30 ? 30 : array.length);
-};
-  
-/**
- * Push items list in their respective array
- * @param {array} displayedRecipes - use only recipes that match any research done before
- * don't forget to reset arrays of each sub search at the beginning
- */ 
-export const pushInArray = (displayedRecipes) => {
-    ingredientsArray = [];
-    appliancesArray = [];
-    ustensilsArray = [];
-    console.log(displayedRecipes)
-    displayedRecipes.forEach(recipe => {
-        recipe.ingredients.forEach((currentIngredient) => {
-        ingredientsArray.push(currentIngredient.ingredient);
-        });
-        appliancesArray.push(recipe.appliance);
-        recipe.ustensils.forEach((currentUstensil) => {
-        ustensilsArray.push(currentUstensil);
-        });
-    });
-    // Filter duplicate tags
-    ingredientsArray = [...new Set(ingredientsArray)];
-    appliancesArray = [...new Set(appliancesArray)];
-    ustensilsArray = [...new Set(ustensilsArray)];
-} ;
-
-/**
- * Use each sub search arrays in order to create their respective item list.
- * First reset the section, then you create the element, after that set all attributes, define inner HTML and finally append it in the right section.
- */
-export const buildItemLists = () => {
-    console.log(document.getElementById('Ingrédient__taglist'))
-    document.getElementById('Ingrédient__taglist').innerHTML = '';
-    for (let i = 0; i < ulLength(ingredientsArray); i++){
-        let ingTag = document.createElement('li');
-        ingTag.classList.add('dropdown-item');
-        ingTag.setAttribute('aria-selected', 'false');
-        ingTag.setAttribute('role', 'option');
-        ingTag.innerHTML = ingredientsArray[i];
-        document.getElementById('Ingrédient__taglist').append(ingTag);
-        addEventToTag(ingTag);
-    };
-    document.getElementById('Appareils__taglist').innerHTML = '';
-    for (let i = 0; i < ulLength(appliancesArray); i++){
-        let aplTag = document.createElement('li');
-        aplTag.classList.add('dropdown-item');
-        aplTag.setAttribute('aria-selected', 'false');
-        aplTag.setAttribute('role', 'option');
-        aplTag.innerHTML = appliancesArray[i];
-        document.getElementById('Appareils__taglist').append(aplTag);
-        addEventToTag(aplTag);
-    };
-    document.getElementById('Ustensiles__taglist').innerHTML = '';
-    for (let i = 0; i < ulLength(ustensilsArray); i++){
-        let ustTag = document.createElement('li');
-        ustTag.classList.add('dropdown-item');
-        ustTag.setAttribute('aria-selected', 'false');
-        ustTag.setAttribute('role', 'option');
-        ustTag.innerHTML = ustensilsArray[i];
-        document.getElementById('Ustensiles__taglist').append(ustTag);
-        addEventToTag(ustTag);
-    };
-};

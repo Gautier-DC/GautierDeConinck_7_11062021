@@ -12,6 +12,3 @@ export let subsearchNames = ['Ingrédient', 'Appareils', 'Ustensiles'];
 
 //Array for the search
 export const currentSearch = [];
-
-// Array used to create tags
-export let researchTags = [];

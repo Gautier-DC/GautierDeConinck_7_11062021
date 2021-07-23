@@ -3,7 +3,7 @@ import {mainsearchInput} from './variables'
 import {currentSearch, recipesSection} from './variables'
 import { setRecipes } from './set_recipes';
 import { cleanUpString } from './utils';
-import { pushInArray, buildItemLists } from './tags';
+import { pushInArray, buildItemLists } from './sub_searchs';
 
 /**
  * FIRST ALGORYTHME SEARCH
@@ -11,11 +11,13 @@ import { pushInArray, buildItemLists } from './tags';
  * Principle of this algorythme is a simple linear search.
  * On keyup 
  */
-export const search = (searchInput) => {
+export const search = (currentSearch = []) => {
   let filteredRecipes = recipes;
-  currentSearch.splice(0, currentSearch.length);
-  if(searchInput.value.length >= 3){
-    cleanUpString(searchInput.value).split(' ').forEach( queryKeyword => currentSearch.push(queryKeyword));
+  currentSearch = currentSearch.map(keyword => cleanUpString(keyword));
+  console.log('reset');
+  if(mainsearchInput.value.length >= 3 || currentSearch.length >= 1){
+    console.log('main search', currentSearch);
+    cleanUpString(mainsearchInput.value).split(' ').forEach( queryKeyword => currentSearch.push(queryKeyword));
     console.log('main search', currentSearch);
     currentSearch.forEach(keyword => {
       console.log('for each keyword', keyword, filteredRecipes)
