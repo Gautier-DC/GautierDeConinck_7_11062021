@@ -1,20 +1,21 @@
 import { recipes } from '/recipes.js'
 import {mainsearchInput} from './variables'
-import {currentSearch, recipesSection} from './variables'
+import {recipesSection} from './variables'
 import { setRecipes } from './set_recipes';
 import { cleanUpString } from './utils';
 import { pushInArray, buildItemLists } from './sub_searchs';
 
 /**
  * FIRST ALGORYTHME SEARCH
- * @param {inputfield} searchInput
+ * @param {Array} currentSearch - setup empty by default.
  * Principle of this algorythme is a simple linear search.
- * On keyup 
+ * Use the current search array to setup the search function and push your research after being cleaned by the fonction CleanUpString. (whenever it comes from the main or sub searchs)
+ * Then for do a loop forEach keyword, and check in fields of recipes (with filter and include fonctions) if the different currentSearch values match.
+ * Finally display the recipes and the right item list in the different sub searchs with the right functions
  */
 export const search = (currentSearch = []) => {
   let filteredRecipes = recipes;
   currentSearch = currentSearch.map(keyword => cleanUpString(keyword));
-  console.log('reset');
   if(mainsearchInput.value.length >= 3 || currentSearch.length >= 1){
     console.log('main search', currentSearch);
     cleanUpString(mainsearchInput.value).split(' ').forEach( queryKeyword => currentSearch.push(queryKeyword));
