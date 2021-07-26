@@ -10,7 +10,7 @@ let researchTags = [];
  */ 
 
 /**
- * Define elements and style for tags
+ * Define HTML elements and style for tags
  * @param {string}
  */ 
 const createTag = (label) => {

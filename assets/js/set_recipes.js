@@ -1,12 +1,11 @@
 import { recipesSection } from "./variables";
 import { recipes } from '/recipes.js'
 /**
- * Create recipes cards - Use ternary to avoid missing element in ingredients part
+ * Create HTML recipes cards - Use ternary to avoid missing element in ingredients part
  * @param {array} 
  */
  export const setRecipes = (matchedRecipes) => {
     recipesSection.innerHTML = '';
-    console.log('créer les recettes', recipes)
     matchedRecipes.forEach(recipe => {
       let recipeHTML = `
       <article class="card col-12 col-md-6 col-lg-4 border-0">
