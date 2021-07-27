@@ -1,8 +1,6 @@
-import { tagContainer, currentSearch } from "./variables";
+import { tagContainer, researchTags } from "./variables";
 import { search } from "./search";
-
-// Array used to create tags
-let researchTags = [];
+import { cleanUpString } from "./utils";
 
 /**
  * Define the behavior of tags that are displayed in item list of each sub search.
@@ -19,23 +17,21 @@ const createTag = (label) => {
     span.innerHTML = label;
     const closeBtn = document.createElement('i');
     closeBtn.classList.add('far', 'fa-times-circle');
-    closeBtn.setAttribute('data-item', label);
+    closeBtn.setAttribute('data-item', cleanUpString(label));
     span.appendChild(closeBtn);
     return span;
 };
   
-// Reset to avoid cumulated tags
-const reset = () => {
-    document.querySelectorAll('.tag').forEach( tag =>{
-        tag.parentElement.removeChild(tag);
-    });
-};
-
-// Add tags in tag container with the right order
-const addTags = () => {
-    reset();
-    researchTags.slice().reverse().forEach(tag => {
-        tagContainer.prepend(createTag(tag));
+/**
+ * Add tags to arrays (the one that display tags and the one that filter the recipes)
+ * @param {string}
+ */ 
+export const addEventToTag = (tag) => {
+    tag.addEventListener('click', function(e){
+        researchTags.push(cleanUpString(tag.innerText));
+        tagContainer.append(createTag(tag.innerText));
+        search();
+        console.log('tag click researchTags', researchTags)
     });
 };
 
@@ -47,24 +43,12 @@ document.addEventListener('click', (e) => {
     if(e.target.tagName == 'I') {
         const value = e.target.getAttribute('data-item');
         const indexTag = researchTags.indexOf(value);
-        researchTags = [...researchTags.slice(0, indexTag), ...researchTags.slice(indexTag + 1)];
+        researchTags.splice(indexTag, 1);
+        e.target.parentElement.remove(e);
         console.log('after delete', researchTags)
-        search(researchTags);
-        addTags();
+        search();
     };
 });
 
-/**
- * Add tags to arrays (the one that display tags and the one that filter the recipes)
- * @param {string}
- */ 
-export const addEventToTag = (tag) => {
-    tag.addEventListener('click', function(e){
-        researchTags.push(tag.innerText);
-        addTags();
-        search(researchTags);
-        console.log('tag click currentsearch', currentSearch)
-    });
-};
 
 

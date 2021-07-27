@@ -1,5 +1,4 @@
 import { recipesSection } from "./variables";
-import { recipes } from '/recipes.js'
 /**
  * Create HTML recipes cards - Use ternary to avoid missing element in ingredients part
  * @param {array} 

@@ -5,7 +5,7 @@ import { Dropdown } from 'bootstrap';
 import { recipes } from '/recipes.js'
 import { search } from './search';
 import { setRecipes } from './set_recipes';
-import { subsearchNames, mainsearchInput, currentSearch } from './variables';
+import { subsearchNames, mainsearchInput } from './variables';
 import { buildSubsearchBtn,  pushInArray, buildItemLists } from './sub_searchs';
 
 setRecipes(recipes);

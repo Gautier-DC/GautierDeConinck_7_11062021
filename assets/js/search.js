@@ -1,5 +1,5 @@
 import { recipes } from '/recipes.js'
-import {mainsearchInput} from './variables'
+import {mainsearchInput, researchTags} from './variables'
 import {recipesSection} from './variables'
 import { setRecipes } from './set_recipes';
 import { cleanUpString } from './utils';
@@ -15,11 +15,11 @@ import { pushInArray, buildItemLists } from './sub_searchs';
  */
 export const search = (currentSearch = []) => {
   let filteredRecipes = recipes;
-  currentSearch = currentSearch.map(keyword => cleanUpString(keyword));
+  researchTags.forEach(tag => currentSearch.push(tag));
+  console.log('first search', currentSearch);  
+  currentSearch.map(keyword => cleanUpString(keyword));
   if(mainsearchInput.value.length >= 3 || currentSearch.length >= 1){
-    console.log('main search', currentSearch);
-    cleanUpString(mainsearchInput.value).split(' ').forEach( queryKeyword => currentSearch.push(queryKeyword));
-    console.log('main search', currentSearch);
+    cleanUpString(mainsearchInput.value).split(' ').forEach(queryKeyword => queryKeyword.length != 0 ? currentSearch.push(queryKeyword) : null);;
     currentSearch.forEach(keyword => {
       console.log('for each keyword', keyword, filteredRecipes)
       filteredRecipes = filteredRecipes.filter( recipe => {

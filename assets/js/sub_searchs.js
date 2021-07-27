@@ -1,6 +1,5 @@
 import { subsearchNames } from "./variables";
 import { cleanUpString } from "./utils";
-import { addEventToTag } from "./tags";
 import { search } from "./search";
 import { setOpenAtt, setSubBloc, removeOpen, setItemAtt } from "./inner_html_render";
 
@@ -46,18 +45,15 @@ export const buildSubsearchBtn = (subsearchList) => {
          * Onclick add it to tag container and research array
          */
         inputField.onkeyup = () => {
-          console.log("inputfield", inputField);
           if (inputField.value.length >= 1) {
             console.log("sub search input", inputField.value, inputField.dataset.name);
             if (inputField.dataset.name == "Ingrédient") {
-              console.log('oui')
               let filteredIngredients = [];
               ingredientsArray.forEach((ing) => {
                 if (cleanUpString(ing).includes(inputField.value)) {
                   filteredIngredients.push(ing);
                 }
               });
-              console.log('milieu', ingredientsArray)
               ingredientsArray = filteredIngredients;
             } else if (inputField.dataset.name == "Ustensiles") {
               let filteredUstensils = [];
@@ -115,7 +111,6 @@ export const pushInArray = (displayedRecipes) => {
   ingredientsArray = [];
   appliancesArray = [];
   ustensilsArray = [];
-  console.log("pushinArray", displayedRecipes);
   displayedRecipes.forEach((recipe) => {
     recipe.ingredients.forEach((currentIngredient) => {
       ingredientsArray.push(currentIngredient.ingredient);

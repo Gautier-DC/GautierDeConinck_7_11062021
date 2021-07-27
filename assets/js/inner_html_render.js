@@ -2,7 +2,7 @@ import { addEventToTag } from "./tags";
 
 /**
  * Set the attributes of sub search bloc and its inner html
- * @param {element} subBloc 
+ * @param {HTMLelement} subBloc 
  * @param {string} elt 
  */
 
@@ -46,14 +46,14 @@ export const setSubBloc = (subBloc, elt) => {
  * @param {string} elt 
  */
 export const setOpenAtt = (btn, input, bloc, elt) => {
-    btn.classList.add("open");
-    input.removeAttribute("value");
-    input.setAttribute("type", "search");
-    input.setAttribute("placeholder", `Rechercher un ${elt}`);
-    input.setAttribute("data-name", elt);
-    input.focus();
-    bloc.classList.remove("col-lg-3");
-    bloc.classList.add("col-lg-6");
+  btn.classList.add("open");
+  input.removeAttribute("value");
+  input.setAttribute("type", "search");
+  input.setAttribute("placeholder", `Rechercher un ${elt}`);
+  input.setAttribute("data-name", elt);
+  input.focus();
+  bloc.classList.remove("col-lg-3");
+  bloc.classList.add("col-lg-6");
 }
 
 
