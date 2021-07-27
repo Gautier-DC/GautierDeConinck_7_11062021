@@ -23,8 +23,8 @@ export const search = (currentSearch = []) => {
     currentSearch.forEach(keyword => {
       console.log('for each keyword', keyword, filteredRecipes)
       filteredRecipes = filteredRecipes.filter( recipe => {
-        for (let i = 0; i < recipe.ingredients.length; i++){
-          for (let j = 0; j < recipe.ustensils.length; j++){
+        for (let i = 0; i < recipe.ingredients.length; i++) {
+          for (let j = 0; j < recipe.ustensils.length; j++) {
             if (
               cleanUpString(recipe.name).includes(keyword) ||
               cleanUpString(recipe.appliance).includes(keyword) ||
@@ -33,9 +33,7 @@ export const search = (currentSearch = []) => {
               cleanUpString(recipe.description).includes(keyword)
             ) {
               return true;
-            } else {            
-              return false;
-            }
+            } 
           };
         };
       });
