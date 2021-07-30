@@ -53,7 +53,6 @@ export const buildSubsearchBtn = (subsearchList) => {
           } else {
             search();
           }
-          console.log('fin', filtersData.ingredientsArr)
         };
       }
     };
@@ -116,10 +115,13 @@ export const buildItemLists = () => {
   setItemAtt(ustList, filtersData.ustensilsArr, 'btn-secondary');
 };
 
+/**
+ * Function to set the behavior of each search input - simply check if the array include the search and push the result into a new array
+ * @param {HTMLElement} inputField 
+ */
 const setSubSearch = (inputField) => {
   const fieldName = inputField.dataset.name;
     let filteredArr = [];
-    console.log('hey', filtersData[`${fieldName}Arr`]);
     filtersData[`${fieldName}Arr`].forEach(item => {
       if (cleanUpString(item).includes(inputField.value)) {
         filteredArr.push(item);

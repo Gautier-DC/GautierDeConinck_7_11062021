@@ -36,7 +36,6 @@ export const search = (currentSearch = []) => {
           };
         };
       });
-      console.log('instant t', keyword, filteredRecipes);
     });
     setRecipes(filteredRecipes);
     pushInArray(filteredRecipes);
