@@ -1,5 +1,4 @@
 import 'bootstrap';
-import { Dropdown } from 'bootstrap';
 
 // Import
 import { recipes } from '/recipes.js'
@@ -13,4 +12,3 @@ pushInArray(recipes);
 buildSubsearchBtn(subsearchNames);
 buildItemLists();
 mainsearchInput.addEventListener("keyup", e => { search()});
-console.log(mainsearchInput)

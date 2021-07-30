@@ -1,9 +1,10 @@
-import { recipes } from '/recipes.js'
-import {mainsearchInput, researchTags} from './variables'
-import {recipesSection} from './variables'
+import { recipes } from '/recipes.js';
+import {mainsearchInput, researchTags} from './variables';
+import {recipesSection} from './variables';
 import { setRecipes } from './set_recipes';
 import { cleanUpString } from './utils';
 import { pushInArray, buildItemLists } from './sub_searchs';
+import { setErrorMsg } from './inner_html_render';
 
 /**
  * FIRST ALGORYTHME SEARCH
@@ -16,12 +17,10 @@ import { pushInArray, buildItemLists } from './sub_searchs';
 export const search = (currentSearch = []) => {
   let filteredRecipes = recipes;
   researchTags.forEach(tag => currentSearch.push(tag));
-  console.log('first search', currentSearch);  
   currentSearch.map(keyword => cleanUpString(keyword));
   if(mainsearchInput.value.length >= 3 || currentSearch.length >= 1){
-    cleanUpString(mainsearchInput.value).split(' ').forEach(queryKeyword => queryKeyword.length != 0 ? currentSearch.push(queryKeyword) : null);;
+    cleanUpString(mainsearchInput.value).split(' ').forEach(queryKeyword => queryKeyword.length != 0 ? currentSearch.push(queryKeyword) : null);
     currentSearch.forEach(keyword => {
-      console.log('for each keyword', keyword, filteredRecipes)
       filteredRecipes = filteredRecipes.filter( recipe => {
         for (let i = 0; i < recipe.ingredients.length; i++) {
           for (let j = 0; j < recipe.ustensils.length; j++) {
@@ -33,20 +32,17 @@ export const search = (currentSearch = []) => {
               cleanUpString(recipe.description).includes(keyword)
             ) {
               return true;
-            } 
+            }; 
           };
         };
       });
-      console.log('instant t', keyword, filteredRecipes)
+      console.log('instant t', keyword, filteredRecipes);
     });
     setRecipes(filteredRecipes);
     pushInArray(filteredRecipes);
     buildItemLists();
     if (recipesSection.childNodes.length == 0){
-      let errorMsg = document.createElement('p');
-      errorMsg.classList.add('recipes__errormsg', 'col','font-weight-bold', 'text-center');
-      errorMsg.innerHTML = 'Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes », « poisson », etc.';
-      recipesSection.appendChild(errorMsg);
+      setErrorMsg();
     };
   } else {
     setRecipes(filteredRecipes);

@@ -1,4 +1,6 @@
 import { addEventToTag } from "./tags";
+import { cleanUpString } from "./utils";
+import {recipesSection} from './variables';
 
 /**
  * Set the attributes of sub search bloc and its inner html
@@ -7,8 +9,8 @@ import { addEventToTag } from "./tags";
  */
 
 export const setSubBloc = (subBloc, elt) => {
-    subBloc.setAttribute("id", "sub-search__" + elt);
-    subBloc.setAttribute("data-name", elt);
+    subBloc.setAttribute("id", "sub-search__" + elt.name);
+    subBloc.setAttribute("data-name", elt.name);
     subBloc.classList.add(
       "sub-search__bloc",
       "col-12",
@@ -26,12 +28,12 @@ export const setSubBloc = (subBloc, elt) => {
     data-bs-toggle="dropdown"
     aria-expanded="false"
     >
-      <input class="col btn btn-lg text-white text-left font-weight-bold border-0" type="button" value="${elt}" />
+      <input class="col btn btn-lg text-white text-left font-weight-bold border-0" type="button" value="${elt.label}" />
       <span class="arrow col-1 end-0"></span>
     </div>
     <ul
-      id="${elt}__taglist"
-      class="sub-search__taglist w-100 mw-100 dropdown-menu btn-success text-white border-0 rounded-bottom"
+      id="${elt.name}__taglist"
+      class="sub-search__taglist w-100 mw-100 dropdown-menu text-white border-0 rounded-bottom"
       role="listbox"
     >
     </ul>`;
@@ -49,8 +51,8 @@ export const setOpenAtt = (btn, input, bloc, elt) => {
   btn.classList.add("open");
   input.removeAttribute("value");
   input.setAttribute("type", "search");
-  input.setAttribute("placeholder", `Rechercher un ${elt}`);
-  input.setAttribute("data-name", elt);
+  input.setAttribute("placeholder", `Rechercher un ${elt.name}`);
+  input.setAttribute("data-name", elt.name);
   input.focus();
   bloc.classList.remove("col-lg-3");
   bloc.classList.add("col-lg-6");
@@ -73,7 +75,7 @@ export const setOpenAtt = (btn, input, bloc, elt) => {
       currentButton.classList.remove("open");
       inputField.removeAttribute("type");
       inputField.setAttribute("type", "button");
-      inputField.setAttribute("value", elt);
+      inputField.setAttribute("value", elt.label);
       subsearchBloc.classList.remove("col-lg-6");
       subsearchBloc.classList.add("col-lg-3");
     }
@@ -95,15 +97,26 @@ const ulLength = (array) => {
     return array.length > 30 ? 30 : array.length;
     };
   
-export const setItemAtt = (tagList, array) => {
+export const setItemAtt = (tagList, array, tagColor) => {
     tagList.innerHTML = "";
     for (let i = 0; i < ulLength(array); i++) {
         let tag = document.createElement("li");
         tag.classList.add("dropdown-item");
         tag.setAttribute("aria-selected", "false");
         tag.setAttribute("role", "option");
+        tag.setAttribute("data-color", tagColor);
         tag.innerHTML = array[i];
         tagList.append(tag);
         addEventToTag(tag);
     }
+};
+
+/**
+ * Display an error message when there is no recipe
+ */
+export const setErrorMsg = () => {
+  let errorMsg = document.createElement('p');
+  errorMsg.classList.add('recipes__errormsg', 'col','font-weight-bold', 'text-center');
+  errorMsg.innerHTML = 'Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes », « poisson », etc.';
+  recipesSection.appendChild(errorMsg);
 }

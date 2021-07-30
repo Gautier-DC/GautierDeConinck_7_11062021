@@ -9,11 +9,12 @@ import { cleanUpString } from "./utils";
 
 /**
  * Define HTML elements and style for tags
- * @param {string}
+ * @param {string} label
+ * @param {string} color
  */ 
-const createTag = (label) => {
+const createTag = (label, color) => {
     const span = document.createElement('span');
-    span.classList.add('tag', 'btn', 'btn-primary', 'btn-sm', 'mb-1', 'mr-3');
+    span.classList.add('tag', 'btn', color, 'btn-sm', 'mb-1', 'mr-3');
     span.innerHTML = label;
     const closeBtn = document.createElement('i');
     closeBtn.classList.add('far', 'fa-times-circle');
@@ -28,10 +29,10 @@ const createTag = (label) => {
  */ 
 export const addEventToTag = (tag) => {
     tag.addEventListener('click', function(e){
+        let color = tag.getAttribute('data-color');
         researchTags.push(cleanUpString(tag.innerText));
-        tagContainer.append(createTag(tag.innerText));
+        tagContainer.append(createTag(tag.innerText, color));
         search();
-        console.log('tag click researchTags', researchTags)
     });
 };
 
@@ -45,7 +46,6 @@ document.addEventListener('click', (e) => {
         const indexTag = researchTags.indexOf(value);
         researchTags.splice(indexTag, 1);
         e.target.parentElement.remove(e);
-        console.log('after delete', researchTags)
         search();
     };
 });

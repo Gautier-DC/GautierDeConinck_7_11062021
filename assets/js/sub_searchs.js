@@ -1,12 +1,14 @@
 import { subsearchNames } from "./variables";
-import { cleanUpString } from "./utils";
 import { search } from "./search";
+import { cleanUpString } from "./utils";
 import { setOpenAtt, setSubBloc, removeOpen, setItemAtt } from "./inner_html_render";
 
 //Arrays for items lists
-let ingredientsArray = [];
-let appliancesArray = [];
-let ustensilsArray = [];
+const filtersData = {
+  ingredientsArr : [],
+  appliancesArr : [],
+  ustensilsArr : []
+};
 
 /**
  * CREATE SUB SEARCH BUTTON and define his behavior.
@@ -33,7 +35,7 @@ export const buildSubsearchBtn = (subsearchList) => {
       } else {
         // closed mode => add open class and transform input type in search
         subsearchList.forEach((element) => {
-          const subsearchBloc = document.getElementById("sub-search__" + element);
+          const subsearchBloc = document.getElementById("sub-search__" + element.name);
           const currentButton = subsearchBloc.querySelector(".sub-search__button");
           const inputField = subsearchBloc.querySelector(".sub-search__button input");
           removeOpen(element, subsearchBloc, inputField, currentButton);
@@ -46,37 +48,12 @@ export const buildSubsearchBtn = (subsearchList) => {
          */
         inputField.onkeyup = () => {
           if (inputField.value.length >= 1) {
-            console.log("sub search input", inputField.value, inputField.dataset.name);
-            if (inputField.dataset.name == "Ingrédient") {
-              let filteredIngredients = [];
-              ingredientsArray.forEach((ing) => {
-                if (cleanUpString(ing).includes(inputField.value)) {
-                  filteredIngredients.push(ing);
-                }
-              });
-              ingredientsArray = filteredIngredients;
-            } else if (inputField.dataset.name == "Ustensiles") {
-              let filteredUstensils = [];
-              ustensilsArray.forEach((ust) => {
-                if (cleanUpString(ust).includes(inputField.value)) {
-                  filteredUstensils.push(ust);
-                };
-              });
-              ustensilsArray = filteredUstensils;
-            } else {
-              let filteredAppliances = [];
-              appliancesArray.forEach((app) => {
-                if (cleanUpString(app).includes(inputField.value)) {
-                  filteredAppliances.push(app);
-                };
-              });
-              appliancesArray = filteredAppliances;
-            }
+            setSubSearch(inputField);
             buildItemLists();
           } else {
             search();
           }
-          console.log('fin', ingredientsArray)
+          console.log('fin', filtersData.ingredientsArr)
         };
       }
     };
@@ -88,7 +65,7 @@ window.addEventListener("click", function (event) {
   const clickOnBloc = event.target.closest(".sub-search__bloc");
   if (!clickOnBloc) {
     subsearchNames.forEach((element) => {
-      const subsearchBloc = document.getElementById("sub-search__" + element);
+      const subsearchBloc = document.getElementById("sub-search__" + element.name);
       const currentButton = subsearchBloc.querySelector(".sub-search__button");
       const inputField = subsearchBloc.querySelector(".sub-search__button input");
       removeOpen(element, subsearchBloc, inputField, currentButton);
@@ -108,23 +85,22 @@ window.addEventListener("click", function (event) {
  * don't forget to reset arrays of each sub search at the beginning
  */
 export const pushInArray = (displayedRecipes) => {
-  ingredientsArray = [];
-  appliancesArray = [];
-  ustensilsArray = [];
+  filtersData.ingredientsArr = [];
+  filtersData.appliancesArr = [];
+  filtersData.ustensilsArr = [];
   displayedRecipes.forEach((recipe) => {
     recipe.ingredients.forEach((currentIngredient) => {
-      ingredientsArray.push(currentIngredient.ingredient);
+      filtersData.ingredientsArr.push(currentIngredient.ingredient);
     });
-    appliancesArray.push(recipe.appliance);
+    filtersData.appliancesArr.push(recipe.appliance);
     recipe.ustensils.forEach((currentUstensil) => {
-      ustensilsArray.push(currentUstensil);
+      filtersData.ustensilsArr.push(currentUstensil);
     });
   });
   // Filter duplicate tags
-  ingredientsArray = [...new Set(ingredientsArray)];
-  appliancesArray = [...new Set(appliancesArray)];
-  ustensilsArray = [...new Set(ustensilsArray)];
-  console.log("endpushin", ingredientsArray);
+  filtersData.ingredientsArr = [...new Set(filtersData.ingredientsArr)];
+  filtersData.appliancesArr = [...new Set(filtersData.appliancesArr)];
+  filtersData.ustensilsArr = [...new Set(filtersData.ustensilsArr)];
 };
 
 /**
@@ -132,10 +108,22 @@ export const pushInArray = (displayedRecipes) => {
  * First reset the section, then you create the element, after that set all attributes, define inner HTML and finally append it in the right section.
  */
 export const buildItemLists = () => {
-  const ingList = document.getElementById("Ingrédient__taglist");
-  const applList = document.getElementById("Appareils__taglist");
-  const ustList = document.getElementById("Ustensiles__taglist");
-  setItemAtt(ingList, ingredientsArray);
-  setItemAtt(applList, appliancesArray);
-  setItemAtt(ustList, ustensilsArray);
+  const ingList = document.getElementById("ingredients__taglist");
+  const applList = document.getElementById("appliances__taglist");
+  const ustList = document.getElementById("ustensils__taglist");
+  setItemAtt(ingList, filtersData.ingredientsArr, 'btn-primary');
+  setItemAtt(applList, filtersData.appliancesArr, 'btn-success');
+  setItemAtt(ustList, filtersData.ustensilsArr, 'btn-secondary');
+};
+
+const setSubSearch = (inputField) => {
+  const fieldName = inputField.dataset.name;
+    let filteredArr = [];
+    console.log('hey', filtersData[`${fieldName}Arr`]);
+    filtersData[`${fieldName}Arr`].forEach(item => {
+      if (cleanUpString(item).includes(inputField.value)) {
+        filteredArr.push(item);
+      };
+    });
+    filtersData[`${fieldName}Arr`] = filteredArr;
 };

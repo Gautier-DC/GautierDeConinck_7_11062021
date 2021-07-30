@@ -6,8 +6,21 @@ export const recipesSection = document.querySelector('#recipes');
 export let dropdownItems = document.getElementsByClassName('dropdown-item');
 
 
-// Array for sub search button
-export let subsearchNames = ['Ingrédient', 'Appareils', 'Ustensiles'];
+// Array for sub search sections
+export let subsearchNames = [
+    {
+        'label': 'Ingrédients',
+        'name': 'ingredients' 
+    },
+    {
+        'label': 'Ustensiles',
+        'name': 'ustensils' 
+    },
+    {
+        'label': 'Appareils',
+        'name': 'appliances' 
+    }
+]
 
 // Array for the tags
 export const researchTags = [];
