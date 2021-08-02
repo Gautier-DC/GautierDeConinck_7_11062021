@@ -1,5 +1,5 @@
 import { subsearchNames } from "./variables";
-import { search } from "./search";
+import { search } from "./algoB";
 import { cleanUpString } from "./utils";
 import { setOpenAtt, setSubBloc, removeOpen, setItemAtt } from "./inner_html_render";
 

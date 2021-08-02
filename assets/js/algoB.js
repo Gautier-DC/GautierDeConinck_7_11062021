@@ -1,4 +1,4 @@
-import { recipes } from '/recipes.js';
+import { searchRecipes } from '.';
 import {mainsearchInput, researchTags} from './variables';
 import {recipesSection} from './variables';
 import { setRecipes } from './set_recipes';
@@ -15,26 +15,20 @@ import { setErrorMsg } from './inner_html_render';
  * Finally display the recipes and the right item list in the different sub searchs with the right functions
  */
 export const search = (currentSearch = []) => {
-  let filteredRecipes = recipes;
+  let filteredRecipes = searchRecipes;
+  console.log('searchLog', filteredRecipes)
   researchTags.forEach(tag => currentSearch.push(tag));
   currentSearch.map(keyword => cleanUpString(keyword));
   if(mainsearchInput.value.length >= 3 || currentSearch.length >= 1){
+    console.log('Is it clean ?', cleanUpString(mainsearchInput.value))
     cleanUpString(mainsearchInput.value).split(' ').forEach(queryKeyword => queryKeyword.length != 0 ? currentSearch.push(queryKeyword) : null);
     currentSearch.forEach(keyword => {
       filteredRecipes = filteredRecipes.filter( recipe => {
-        for (let i = 0; i < recipe.ingredients.length; i++) {
-          for (let j = 0; j < recipe.ustensils.length; j++) {
-            if (
-              cleanUpString(recipe.name).includes(keyword) ||
-              cleanUpString(recipe.appliance).includes(keyword) ||
-              cleanUpString(recipe.ingredients[i].ingredient).includes(keyword) ||
-              cleanUpString(recipe.ustensils[j]).includes(keyword) ||
-              cleanUpString(recipe.description).includes(keyword)
-            ) {
-              return true;
-            }; 
-          };
-        };
+        if (
+          recipe.searchField.includes(keyword)
+        ) {
+          return true;
+        }; 
       });
     });
     setRecipes(filteredRecipes);

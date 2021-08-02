@@ -1,5 +1,5 @@
 import { tagContainer, researchTags } from "./variables";
-import { search } from "./search";
+import { search } from "./algoB";
 import { cleanUpString } from "./utils";
 
 /**
