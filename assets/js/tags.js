@@ -25,14 +25,20 @@ const createTag = (label, color) => {
   
 /**
  * Add tags to arrays (the one that display tags and the one that filter the recipes)
+ * with this search algorythm you need to split each tags and push it in the array, otherwise it won't work.
  * @param {string}
  */ 
 export const addEventToTag = (tag) => {
     tag.addEventListener('click', function(e){
         let color = tag.getAttribute('data-color');
-        researchTags.push(cleanUpString(tag.innerText));
-        tagContainer.append(createTag(tag.innerText, color));
+        cleanUpString(tag.innerText).split(' ').forEach(word => word.length > 2 ? researchTags.push(word) : null);
+        tag.innerText.split(' ').forEach(t => {
+            if(t.length > 2) {
+                tagContainer.append(createTag(t, color));
+            }
+        });
         search();
+        console.log('on click', researchTags)
     });
 };
 
@@ -47,6 +53,7 @@ document.addEventListener('click', (e) => {
         researchTags.splice(indexTag, 1);
         e.target.parentElement.remove(e);
         search();
+        console.log('after delete', researchTags)
     };
 });
 

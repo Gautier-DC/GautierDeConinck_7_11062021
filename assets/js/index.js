@@ -15,7 +15,9 @@ import { cleanUpString } from './utils';
  */
 const createSearchField = (recipe) => {
     let searchField = cleanUpString(recipe.name + " " + recipe.description + " " + recipe.ingredients.map((i) => i.ingredient).join(" "));
-    return searchField
+    searchField = searchField.split(' ').sort();
+    searchField = [...new Set(searchField)]
+    return searchField;
 };
 
 export const searchRecipes = recipes.map((recipe) => ({...recipe, searchField: createSearchField(recipe)}));

@@ -16,7 +16,6 @@ import { setErrorMsg } from './inner_html_render';
  */
 export const search = (currentSearch = []) => {
   let filteredRecipes = searchRecipes;
-  console.log('searchLog', filteredRecipes)
   researchTags.forEach(tag => currentSearch.push(tag));
   currentSearch.map(keyword => cleanUpString(keyword));
   if(mainsearchInput.value.length >= 3 || currentSearch.length >= 1){
@@ -24,11 +23,24 @@ export const search = (currentSearch = []) => {
     cleanUpString(mainsearchInput.value).split(' ').forEach(queryKeyword => queryKeyword.length != 0 ? currentSearch.push(queryKeyword) : null);
     currentSearch.forEach(keyword => {
       filteredRecipes = filteredRecipes.filter( recipe => {
-        if (
-          recipe.searchField.includes(keyword)
-        ) {
-          return true;
-        }; 
+      let start = 0;
+      let end = recipe.searchField.length - 1;
+      let middle = Math.floor((start + end)/2);
+      console.log('end', end, recipe.name, recipe.searchField);
+        while (start <= end){
+          console.log('middle', recipe.searchField[middle])
+          if (recipe.searchField[middle].includes(keyword)){
+            console.log('if middle', middle);
+            return true;
+          } else if (recipe.searchField[middle] < keyword) {
+            start = middle + 1;
+            console.log('else if', start, recipe.searchField[start])
+          } else {
+            console.log('else')
+            end = middle - 1;
+          }
+          middle = Math.floor((start + end)/2);
+        }
       });
     });
     setRecipes(filteredRecipes);
