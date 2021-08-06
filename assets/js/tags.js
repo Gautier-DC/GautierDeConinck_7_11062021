@@ -1,5 +1,5 @@
 import { tagContainer, researchTags } from "./variables";
-import { search } from "./search";
+import { search } from "./algo";
 import { cleanUpString } from "./utils";
 
 /**
@@ -33,6 +33,7 @@ export const addEventToTag = (tag) => {
         researchTags.push(cleanUpString(tag.innerText));
         tagContainer.append(createTag(tag.innerText, color));
         search();
+        document.querySelectorAll('.sub-search__button input').value = null;
     });
 };
 

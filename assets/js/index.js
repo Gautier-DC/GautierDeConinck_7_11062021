@@ -2,7 +2,7 @@ import 'bootstrap';
 
 // Import
 import { recipes } from '/recipes.js'
-import { search } from './search';
+import { search } from './algo';
 import { setRecipes } from './set_recipes';
 import { subsearchNames, mainsearchInput } from './variables';
 import { buildSubsearchBtn,  pushInArray, buildItemLists } from './sub_searchs';

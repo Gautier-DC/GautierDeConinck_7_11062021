@@ -67,18 +67,12 @@ export const setOpenAtt = (btn, input, bloc, elt) => {
  * @param {element} currentButton - Button element of the sub search
  */
  export const removeOpen = (elt, subsearchBloc, inputField, currentButton) => {
-    if (inputField.value.length >= 3) {
-      currentButton.classList.remove("open");
-      subsearchBloc.classList.remove("col-lg-6");
-      subsearchBloc.classList.add("col-lg-3");
-    } else {
-      currentButton.classList.remove("open");
-      inputField.removeAttribute("type");
-      inputField.setAttribute("type", "button");
-      inputField.setAttribute("value", elt.label);
-      subsearchBloc.classList.remove("col-lg-6");
-      subsearchBloc.classList.add("col-lg-3");
-    }
+    currentButton.classList.remove("open");
+    inputField.removeAttribute("type");
+    inputField.setAttribute("type", "button");
+    inputField.setAttribute("value", elt.label);
+    subsearchBloc.classList.remove("col-lg-6");
+    subsearchBloc.classList.add("col-lg-3");
   };
 
   

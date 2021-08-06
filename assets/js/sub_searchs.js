@@ -1,5 +1,5 @@
-import { subsearchNames } from "./variables";
-import { search } from "./search";
+import { subsearchNames, researchTags } from "./variables";
+import { search } from "./algo";
 import { cleanUpString } from "./utils";
 import { setOpenAtt, setSubBloc, removeOpen, setItemAtt } from "./inner_html_render";
 
@@ -47,7 +47,7 @@ export const buildSubsearchBtn = (subsearchList) => {
          * Onclick add it to tag container and research array
          */
         inputField.onkeyup = () => {
-          if (inputField.value.length >= 1) {
+          if (inputField.value.length >= 2) {
             setSubSearch(inputField);
             buildItemLists();
           } else {
@@ -110,6 +110,9 @@ export const buildItemLists = () => {
   const ingList = document.getElementById("ingredients__taglist");
   const applList = document.getElementById("appliances__taglist");
   const ustList = document.getElementById("ustensils__taglist");
+  filtersData.ingredientsArr = removeDuplicates(filtersData.ingredientsArr);
+  filtersData.appliancesArr = removeDuplicates(filtersData.appliancesArr);
+  filtersData.ustensilsArr = removeDuplicates(filtersData.ustensilsArr);
   setItemAtt(ingList, filtersData.ingredientsArr, 'btn-primary');
   setItemAtt(applList, filtersData.appliancesArr, 'btn-success');
   setItemAtt(ustList, filtersData.ustensilsArr, 'btn-secondary');
@@ -129,3 +132,20 @@ const setSubSearch = (inputField) => {
     });
     filtersData[`${fieldName}Arr`] = filteredArr;
 };
+
+/**
+ * Check what is in the research tags array and remove the results in the subsearch array
+ * @param {array} filteredArr 
+ * @returns 
+ */
+const removeDuplicates = (filteredArr) => {
+  researchTags.forEach(tag => {
+    filteredArr.forEach(item => {
+      if(cleanUpString(item) == tag){
+        const indexItem = filteredArr.indexOf(item)
+        filteredArr.splice(indexItem, 1)
+      }
+    })
+  })
+  return filteredArr;
+}
