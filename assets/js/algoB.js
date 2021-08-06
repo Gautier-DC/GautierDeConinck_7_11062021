@@ -9,17 +9,16 @@ import { setErrorMsg } from './inner_html_render';
 /**
  * FIRST ALGORYTHME SEARCH
  * @param {Array} currentSearch - setup empty by default.
- * Principle of this algorythme is a simple linear search.
+ * Principle of this algorythme is a simple binary search.
  * Use the current search array to setup the search function and push your research after being cleaned by the fonction CleanUpString. (whenever it comes from the main or sub searchs)
- * Then for do a loop forEach keyword, and check in fields of recipes (with filter and include fonctions) if the different currentSearch values match.
- * Finally display the recipes and the right item list in the different sub searchs with the right functions
+ * Thanks to the ceateSearchField function, do a forEach in the currentSearch array and start the binary search.
+ * Because Search field is in alphabetical order, you can set a start, an end and a middle. Check if the middle include the search and if it's not the case reset end and start, then restart again.
  */
 export const search = (currentSearch = []) => {
   let filteredRecipes = searchRecipes;
   researchTags.forEach(tag => currentSearch.push(tag));
   currentSearch.map(keyword => cleanUpString(keyword));
   if(mainsearchInput.value.length >= 3 || currentSearch.length >= 1){
-    console.log('Is it clean ?', cleanUpString(mainsearchInput.value))
     cleanUpString(mainsearchInput.value).split(' ').forEach(queryKeyword => queryKeyword.length != 0 ? currentSearch.push(queryKeyword) : null);
     currentSearch.forEach(keyword => {
       filteredRecipes = filteredRecipes.filter( recipe => {
