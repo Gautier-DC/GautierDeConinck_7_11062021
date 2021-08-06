@@ -38,7 +38,7 @@ export const addEventToTag = (tag) => {
             }
         });
         search();
-        console.log('on click', researchTags)
+        document.querySelectorAll('.sub-search__button input').value = null;
     });
 };
 
@@ -53,7 +53,6 @@ document.addEventListener('click', (e) => {
         researchTags.splice(indexTag, 1);
         e.target.parentElement.remove(e);
         search();
-        console.log('after delete', researchTags)
     };
 });
 

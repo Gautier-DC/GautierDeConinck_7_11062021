@@ -1,4 +1,4 @@
-import { subsearchNames } from "./variables";
+import { researchTags, subsearchNames } from "./variables";
 import { search } from "./algoB";
 import { cleanUpString } from "./utils";
 import { setOpenAtt, setSubBloc, removeOpen, setItemAtt } from "./inner_html_render";
@@ -47,7 +47,7 @@ export const buildSubsearchBtn = (subsearchList) => {
          * Onclick add it to tag container and research array
          */
         inputField.onkeyup = () => {
-          if (inputField.value.length >= 1) {
+          if (inputField.value.length >= 2) {
             setSubSearch(inputField);
             buildItemLists();
           } else {
@@ -110,6 +110,9 @@ export const buildItemLists = () => {
   const ingList = document.getElementById("ingredients__taglist");
   const applList = document.getElementById("appliances__taglist");
   const ustList = document.getElementById("ustensils__taglist");
+  filtersData.ingredientsArr = removeDuplicates(filtersData.ingredientsArr);
+  filtersData.appliancesArr = removeDuplicates(filtersData.appliancesArr);
+  filtersData.ustensilsArr = removeDuplicates(filtersData.ustensilsArr);
   setItemAtt(ingList, filtersData.ingredientsArr, 'btn-primary');
   setItemAtt(applList, filtersData.appliancesArr, 'btn-success');
   setItemAtt(ustList, filtersData.ustensilsArr, 'btn-secondary');
@@ -121,11 +124,24 @@ export const buildItemLists = () => {
  */
 const setSubSearch = (inputField) => {
   const fieldName = inputField.dataset.name;
-    let filteredArr = [];
-    filtersData[`${fieldName}Arr`].forEach(item => {
-      if (cleanUpString(item).includes(inputField.value)) {
-        filteredArr.push(item);
-      };
-    });
-    filtersData[`${fieldName}Arr`] = filteredArr;
+  let filteredArr = [];
+  filtersData[`${fieldName}Arr`].forEach(item => {
+    if (cleanUpString(item).includes(cleanUpString(inputField.value))) {
+      filteredArr.push(item);
+    };
+  });
+  filtersData[`${fieldName}Arr`] = filteredArr;
 };
+
+
+const removeDuplicates = (filteredArr) => {
+  researchTags.forEach(tag => {
+    filteredArr.forEach(item => {
+      if(cleanUpString(item).includes(tag)){
+        const indexItem = filteredArr.indexOf(item)
+        filteredArr.splice(indexItem, 1)
+      }
+    })
+  })
+  return filteredArr;
+}

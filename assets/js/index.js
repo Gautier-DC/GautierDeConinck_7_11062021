@@ -14,14 +14,13 @@ import { cleanUpString } from './utils';
  * @returns 
  */
 const createSearchField = (recipe) => {
-    let searchField = cleanUpString(recipe.name + " " + recipe.description + " " + recipe.ingredients.map((i) => i.ingredient).join(" "));
+    let searchField = cleanUpString(recipe.name + " " + recipe.description + " " + recipe.appliance + " " + recipe.ingredients.map((i) => i.ingredient).join(" ") + " " + recipe.ustensils.join(" "));
     searchField = searchField.split(' ').sort();
     searchField = [...new Set(searchField)]
     return searchField;
 };
 
 export const searchRecipes = recipes.map((recipe) => ({...recipe, searchField: createSearchField(recipe)}));
-console.log('index',searchRecipes);
 
 setRecipes(recipes);
 pushInArray(recipes);

@@ -26,17 +26,12 @@ export const search = (currentSearch = []) => {
       let start = 0;
       let end = recipe.searchField.length - 1;
       let middle = Math.floor((start + end)/2);
-      console.log('end', end, recipe.name, recipe.searchField);
         while (start <= end){
-          console.log('middle', recipe.searchField[middle])
           if (recipe.searchField[middle].includes(keyword)){
-            console.log('if middle', middle);
             return true;
           } else if (recipe.searchField[middle] < keyword) {
             start = middle + 1;
-            console.log('else if', start, recipe.searchField[start])
           } else {
-            console.log('else')
             end = middle - 1;
           }
           middle = Math.floor((start + end)/2);
