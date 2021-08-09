@@ -1,29 +1,40 @@
-import 'bootstrap';
+import "bootstrap";
 
 // Import
-import { recipes } from '/recipes.js'
-import { search } from './algoB';
-import { setRecipes } from './set_recipes';
-import { subsearchNames, mainsearchInput } from './variables';
-import { buildSubsearchBtn,  pushInArray, buildItemLists } from './sub_searchs';
-import { cleanUpString } from './utils';
+import { recipes } from "/recipes.js";
+import { search } from "./algoB";
+import { setRecipes } from "./set_recipes";
+import { subsearchNames, mainsearchInput } from "./variables";
+import { buildSubsearchBtn, pushInArray, buildItemLists } from "./sub_searchs";
+import { cleanUpString } from "./utils";
 
 /**
- * Create a key/value that contains all the corresponding field for the search
- * @param {object} recipe 
- * @returns 
+ * Create a key/value that contains all the corresponding fields for the search
+ * @param {object} recipe
+ * @returns
  */
 const createSearchField = (recipe) => {
-    let searchField = cleanUpString(recipe.name + " " + recipe.description + " " + recipe.appliance + " " + recipe.ingredients.map((i) => i.ingredient).join(" ") + " " + recipe.ustensils.join(" "));
-    searchField = searchField.split(' ').sort();
-    searchField = [...new Set(searchField)]
-    return searchField;
+  let searchField = cleanUpString(
+    recipe.name +
+      " " +
+      recipe.description +
+      " " +
+      recipe.appliance +
+      " " +
+      recipe.ingredients.map((i) => i.ingredient).join(" ") +
+      " " +
+      recipe.ustensils.join(" ")
+  );
+  searchField = searchField.split(" ").sort();
+  searchField = [...new Set(searchField)];
+  return searchField;
 };
-
-export const searchRecipes = recipes.map((recipe) => ({...recipe, searchField: createSearchField(recipe)}));
-
+export const searchRecipes = recipes.map((recipe) => ({ ...recipe, searchField: createSearchField(recipe) }));
 setRecipes(recipes);
+console.log(searchRecipes);
 pushInArray(recipes);
 buildSubsearchBtn(subsearchNames);
 buildItemLists();
-mainsearchInput.addEventListener("keyup", e => { search()});
+mainsearchInput.addEventListener("keyup", (e) => {
+  search();
+});

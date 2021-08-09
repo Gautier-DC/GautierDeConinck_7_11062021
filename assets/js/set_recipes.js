@@ -1,12 +1,12 @@
 import { recipesSection } from "./variables";
 /**
  * Create HTML recipes cards - Use ternary to avoid missing element in ingredients part
- * @param {array} 
+ * @param {array}
  */
- export const setRecipes = (matchedRecipes) => {
-    recipesSection.innerHTML = '';
-    matchedRecipes.forEach(recipe => {
-      let recipeHTML = `
+export const setRecipes = (matchedRecipes) => {
+  recipesSection.innerHTML = "";
+  matchedRecipes.forEach((recipe) => {
+    let recipeHTML = `
       <article class="card col-12 col-md-6 col-lg-4 border-0">
             <figure class="card-img-top px-0 mb-0"></figure>
             <div class="card-body d-flex flex-column justify-content-start rounded-bottom">
@@ -16,10 +16,10 @@ import { recipesSection } from "./variables";
               </div>
               <div class="row justify-content-between align-items-start">
                 <ul class="card-text col-6 list-unstyled line-clamp">`;
-      recipe.ingredients.forEach(ing => {
-        recipeHTML += `<li><strong>${ing.ingredient} :</strong> ${ing.quantity ? ing.quantity : ''} ${ing.unit ? ing.unit : ''} </li>`
-      });
-      recipeHTML += `
+    recipe.ingredients.forEach((ing) => {
+      recipeHTML += `<li><strong>${ing.ingredient} :</strong> ${ing.quantity ? ing.quantity : ""} ${ing.unit ? ing.unit : ""} </li>`;
+    });
+    recipeHTML += `
             </ul>
             <p class="card-text col-6 line-clamp">
               ${recipe.description}
@@ -28,6 +28,6 @@ import { recipesSection } from "./variables";
         </div>
       </article>
       `;
-      recipesSection.insertAdjacentHTML('beforeend', recipeHTML);
-    });
-  };
+    recipesSection.insertAdjacentHTML("beforeend", recipeHTML);
+  });
+};
