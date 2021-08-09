@@ -5,9 +5,9 @@ import { setOpenAtt, setSubBloc, removeOpen, setItemAtt } from "./inner_html_ren
 
 //Arrays for items lists
 const filtersData = {
-  ingredientsArr : [],
-  appliancesArr : [],
-  ustensilsArr : []
+  ingredientsArr: [],
+  appliancesArr: [],
+  ustensilsArr: [],
 };
 
 /**
@@ -77,7 +77,6 @@ window.addEventListener("click", function (event) {
  * Add item list in each sub search (max 30 items)
  */
 
-
 /**
  * Push items list in their respective array
  * @param {array} displayedRecipes - use only recipes that match any research done before
@@ -113,39 +112,39 @@ export const buildItemLists = () => {
   filtersData.ingredientsArr = removeDuplicates(filtersData.ingredientsArr);
   filtersData.appliancesArr = removeDuplicates(filtersData.appliancesArr);
   filtersData.ustensilsArr = removeDuplicates(filtersData.ustensilsArr);
-  setItemAtt(ingList, filtersData.ingredientsArr, 'btn-primary');
-  setItemAtt(applList, filtersData.appliancesArr, 'btn-success');
-  setItemAtt(ustList, filtersData.ustensilsArr, 'btn-secondary');
+  setItemAtt(ingList, filtersData.ingredientsArr, "btn-primary");
+  setItemAtt(applList, filtersData.appliancesArr, "btn-success");
+  setItemAtt(ustList, filtersData.ustensilsArr, "btn-secondary");
 };
 
 /**
  * Function to set the behavior of each search input - simply check if the array include the search and push the result into a new array
- * @param {HTMLElement} inputField 
+ * @param {HTMLElement} inputField
  */
 const setSubSearch = (inputField) => {
   const fieldName = inputField.dataset.name;
-    let filteredArr = [];
-    filtersData[`${fieldName}Arr`].forEach(item => {
-      if (cleanUpString(item).includes(inputField.value)) {
-        filteredArr.push(item);
-      };
-    });
-    filtersData[`${fieldName}Arr`] = filteredArr;
+  let filteredArr = [];
+  filtersData[`${fieldName}Arr`].forEach((item) => {
+    if (cleanUpString(item).includes(inputField.value)) {
+      filteredArr.push(item);
+    }
+  });
+  filtersData[`${fieldName}Arr`] = filteredArr;
 };
 
 /**
  * Check what is in the research tags array and remove the results in the subsearch array
- * @param {array} filteredArr 
- * @returns 
+ * @param {array} filteredArr
+ * @returns
  */
 const removeDuplicates = (filteredArr) => {
-  researchTags.forEach(tag => {
-    filteredArr.forEach(item => {
-      if(cleanUpString(item) == tag){
-        const indexItem = filteredArr.indexOf(item)
-        filteredArr.splice(indexItem, 1)
+  researchTags.forEach((tag) => {
+    filteredArr.forEach((item) => {
+      if (cleanUpString(item) == tag) {
+        const indexItem = filteredArr.indexOf(item);
+        filteredArr.splice(indexItem, 1);
       }
-    })
-  })
+    });
+  });
   return filteredArr;
-}
+};

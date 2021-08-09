@@ -1,10 +1,10 @@
-import { recipes } from '/recipes.js';
-import {mainsearchInput, researchTags} from './variables';
-import {recipesSection} from './variables';
-import { setRecipes } from './set_recipes';
-import { cleanUpString } from './utils';
-import { pushInArray, buildItemLists } from './sub_searchs';
-import { setErrorMsg } from './inner_html_render';
+import { recipes } from "/recipes.js";
+import { mainsearchInput, researchTags } from "./variables";
+import { recipesSection } from "./variables";
+import { setRecipes } from "./set_recipes";
+import { cleanUpString } from "./utils";
+import { pushInArray, buildItemLists } from "./sub_searchs";
+import { setErrorMsg } from "./inner_html_render";
 
 /**
  * FIRST ALGORYTHME SEARCH
@@ -16,12 +16,14 @@ import { setErrorMsg } from './inner_html_render';
  */
 export const search = (currentSearch = []) => {
   let filteredRecipes = recipes;
-  researchTags.forEach(tag => currentSearch.push(tag));
-  currentSearch.map(keyword => cleanUpString(keyword));
-  if(mainsearchInput.value.length >= 3 || currentSearch.length >= 1){
-    cleanUpString(mainsearchInput.value).split(' ').forEach(queryKeyword => queryKeyword.length != 0 ? currentSearch.push(queryKeyword) : null);
-    currentSearch.forEach(keyword => {
-      filteredRecipes = filteredRecipes.filter( recipe => {
+  researchTags.forEach((tag) => currentSearch.push(tag));
+  currentSearch.map((keyword) => cleanUpString(keyword));
+  if (mainsearchInput.value.length >= 3 || currentSearch.length >= 1) {
+    cleanUpString(mainsearchInput.value)
+      .split(" ")
+      .forEach((queryKeyword) => (queryKeyword.length != 0 ? currentSearch.push(queryKeyword) : null));
+    currentSearch.forEach((keyword) => {
+      filteredRecipes = filteredRecipes.filter((recipe) => {
         for (let i = 0; i < recipe.ingredients.length; i++) {
           for (let j = 0; j < recipe.ustensils.length; j++) {
             if (
@@ -32,20 +34,20 @@ export const search = (currentSearch = []) => {
               cleanUpString(recipe.description).includes(keyword)
             ) {
               return true;
-            }; 
-          };
-        };
+            }
+          }
+        }
       });
     });
     setRecipes(filteredRecipes);
     pushInArray(filteredRecipes);
     buildItemLists();
-    if (recipesSection.childNodes.length == 0){
+    if (recipesSection.childNodes.length == 0) {
       setErrorMsg();
-    };
+    }
   } else {
     setRecipes(filteredRecipes);
     pushInArray(filteredRecipes);
     buildItemLists();
-  };
+  }
 };
